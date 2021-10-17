@@ -5,6 +5,12 @@ admin_path:
 webhook_url: 
 sections:
 - type: heading
+  label: Global
+- type: document
+  path: site/global.md
+  label: Global
+  match: "**/*"
+- type: heading
   label: Pages
 - type: document
   path: site/index.md
