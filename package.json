@@ -1,0 +1,15 @@
+{
+  "name": "elm-pages-app",
+  "scripts": {
+    "start": "elm-pages dev",
+    "build": "elm-pages build"
+  },
+  "devDependencies": {
+    "elm": "latest-0.19.1",
+    "elm-pages": "^2.1.4"
+  },
+  "dependencies": {
+    "elm-optimize-level-2": "^0.2.3",
+    "elm-review": "^2.6.1"
+  }
+}
