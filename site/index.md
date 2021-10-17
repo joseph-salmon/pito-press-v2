@@ -1,5 +1,5 @@
 ---
-title: "Home"
-rows:
-    - Another row
+title: Home
+rows: []
+
 ---
