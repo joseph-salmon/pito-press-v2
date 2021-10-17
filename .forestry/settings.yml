@@ -3,7 +3,12 @@ new_page_extension: md
 auto_deploy: false
 admin_path: 
 webhook_url: 
-sections: 
+sections:
+- type: document
+  path: site/index.md
+  label: Home
+  match: "**/*"
+  read_only: false
 upload_dir: public/uploads
 public_path: "/uploads"
 front_matter_path: ''
