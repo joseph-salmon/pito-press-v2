@@ -1,4 +1,42 @@
 ---
 label: General Page
 hide_body: false
-fields: []
+fields:
+- name: title
+  type: text
+  config:
+    required: true
+    min: 0
+    max: 250
+  label: Title
+  description: Give this page a title
+- name: description
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: false
+    schema:
+      format: markdown
+    min: 0
+    max: 500
+  label: Description
+  description: Write a brief description of this page
+- name: publish_date
+  type: datetime
+  description: ''
+  config:
+    required: true
+    date_format: DD/MM/YYYY
+    time_format: 
+    display_utc: false
+  label: Publish date
+  default: now
+- name: published
+  type: boolean
+  label: Published
+- name: page_image
+  type: file
+  config:
+    maxSize: 64
+  label: Page image
