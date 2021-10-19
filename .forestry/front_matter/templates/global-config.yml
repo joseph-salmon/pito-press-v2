@@ -2,9 +2,9 @@
 label: Global config
 hide_body: true
 fields:
-- type: list
-  name: nav
-  label: nav
 - type: text
   name: site-name
   label: site-name
+- type: list
+  name: nav
+  label: nav
