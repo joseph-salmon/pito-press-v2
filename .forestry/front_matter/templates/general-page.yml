@@ -40,3 +40,8 @@ fields:
   config:
     maxSize: 64
   label: Page image
+- name: keywords
+  type: tag_list
+  default: []
+  label: Keywords
+  description: Terms that people might use when searching for this content
