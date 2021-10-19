@@ -30,3 +30,5 @@ fields:
 - type: list
   name: tags
   label: Tags
+pages:
+- site/blog/test-post.md
