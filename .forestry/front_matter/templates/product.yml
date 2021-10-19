@@ -1,0 +1,32 @@
+---
+label: Product
+hide_body: false
+fields:
+- type: field_group
+  name: title
+  label: title
+  fields:
+  - type: text
+    name: english
+    label: english
+  - type: text
+    name: te_reo_maori
+    label: te_reo_maori
+- type: list
+  name: rows
+  label: rows
+- type: datetime
+  name: publish_date
+  label: publish_date
+- type: list
+  name: keywords
+  label: keywords
+- type: boolean
+  name: published
+  label: published
+- type: file
+  name: page_image
+  label: page_image
+- type: text
+  name: description
+  label: description
