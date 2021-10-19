@@ -23,6 +23,13 @@ sections:
 - type: heading
   label: Collections
 - type: directory
+  path: site/blog
+  label: Blog posts
+  create: documents
+  match: "*"
+  templates:
+  - blog-post
+- type: directory
   path: site/testimonials
   label: Testimonials
   create: documents
