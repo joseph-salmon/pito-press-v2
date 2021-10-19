@@ -3,13 +3,25 @@ label: General Page
 hide_body: false
 fields:
 - name: title
-  type: text
-  config:
-    required: true
-    min: 0
-    max: 250
+  type: field_group
+  config: {}
+  fields:
+  - name: english
+    type: text
+    config:
+      required: true
+      min: 0
+      max: 250
+    label: English
+  - name: te_reo_maori
+    type: text
+    config:
+      required: true
+      min: 0
+      max: 250
+    label: Te Reo Māori
   label: Title
-  description: Give this page a title
+  description: Page title in English and te reo Māori
 - name: description
   type: textarea
   default: ''
