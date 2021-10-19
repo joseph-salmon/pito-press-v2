@@ -4,7 +4,7 @@ keywords: []
 title:
   english: About
   te_reo_maori: Ko wai mātou
-description: ''
+description: About Pito Press
 published: false
 page_image: ''
 
