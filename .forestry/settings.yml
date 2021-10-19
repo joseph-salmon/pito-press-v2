@@ -14,6 +14,14 @@ sections:
 - type: document
   path: site/index.md
   label: Home
+- type: document
+  path: site/about.md
+  label: About
+- type: document
+  path: site/contact.md
+  label: Contact
+- type: heading
+  label: Collections
 - type: directory
   path: site/testimonials
   label: Testimonials
@@ -21,13 +29,6 @@ sections:
   match: "*"
   templates:
   - testimonial
-- type: document
-  path: site/about.md
-  label: About
-  match: "**/*"
-- type: document
-  path: site/contact.md
-  label: Contact
 upload_dir: public/uploads
 public_path: "/uploads"
 front_matter_path: ''
