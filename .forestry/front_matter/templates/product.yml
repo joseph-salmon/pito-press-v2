@@ -4,29 +4,21 @@ hide_body: false
 fields:
 - type: field_group
   name: title
-  label: title
+  label: Title
   fields:
   - type: text
     name: english
-    label: english
+    label: English
   - type: text
     name: te_reo_maori
-    label: te_reo_maori
-- type: list
-  name: rows
-  label: rows
+    label: Te Reo Māori
 - type: datetime
   name: publish_date
-  label: publish_date
-- type: list
-  name: keywords
-  label: keywords
+  label: Publish date
 - type: boolean
   name: published
-  label: published
-- type: file
-  name: page_image
-  label: page_image
-- type: text
-  name: description
-  label: description
+  label: Published
+- name: product_images
+  type: image_gallery
+  config: {}
+  label: Product images
