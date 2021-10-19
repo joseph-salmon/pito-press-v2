@@ -15,6 +15,10 @@ sections:
   path: site/index.md
   label: Home
 - type: document
+  path: site/products
+  label: Products & services
+  match: "**/*"
+- type: document
   path: site/about.md
   label: About
 - type: document
