@@ -21,9 +21,6 @@ sections:
   match: "*"
   templates:
   - testimonial
-- type: document
-  path: contact.md
-  label: Contact
 upload_dir: public/uploads
 public_path: "/uploads"
 front_matter_path: ''
