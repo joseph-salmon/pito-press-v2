@@ -29,7 +29,7 @@ sections:
   path: Products
   label: Products
   create: documents
-  match: "*"
+  match: site/products/*
   templates:
   - product
 - type: directory
