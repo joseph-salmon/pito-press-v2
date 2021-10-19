@@ -17,8 +17,8 @@ sections:
 - type: directory
   path: site/testimonials
   label: Testimonials
-  create: all
-  match: "**/*"
+  create: documents
+  match: "*"
 upload_dir: public/uploads
 public_path: "/uploads"
 front_matter_path: ''
