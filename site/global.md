@@ -1,9 +1,5 @@
 ---
-nav:
-- url: ''
-  name: Home
-- url: collection
-  name: Collection
+nav: []
 site-name: Pito Press
 
 ---
