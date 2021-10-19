@@ -3,6 +3,7 @@ title:
   english: Perpetual calendar
   te_reo_maori: Maramataka
 published: true
+publish_date: 2021-10-19T09:11:13Z
 
 ---
 Our inaugural product is a perpetual dual calendar to support te reo Māori language learners wanting to understand maramataka.
