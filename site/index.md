@@ -15,7 +15,7 @@ page_image: "/uploads/woodcut.jpg"
 description: A social enterprise creating tools for learning and unlearning in Aotearoa
 
 ---
-# nau mai - welcome
+# Nau mai – welcome
 
 We are Kay Benseman and Joe Salmon, co-founders of Pito Press, a social enterprise creating tools for learning and unlearning in Aotearoa.
 
