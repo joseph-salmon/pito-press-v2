@@ -45,3 +45,5 @@ fields:
   default: []
   label: Keywords
   description: Terms that people might use when searching for this content
+pages:
+- site/index.md
