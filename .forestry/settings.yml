@@ -22,6 +22,10 @@ sections:
   templates:
   - testimonial
 - type: document
+  path: site/about.md
+  label: About
+  match: "**/*"
+- type: document
   path: site/contact.md
   label: Contact
 upload_dir: public/uploads
