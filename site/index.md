@@ -10,6 +10,6 @@ keywords:
 - aotearoa
 published: true
 page_image: "/uploads/woodcut.jpg"
-description: ''
+description: A social enterprise creating tools for learning and unlearning in Aotearoa
 
 ---
