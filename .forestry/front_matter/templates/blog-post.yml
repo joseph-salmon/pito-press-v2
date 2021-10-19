@@ -2,31 +2,31 @@
 label: Blog post
 hide_body: true
 fields:
-- type: field_group
-  name: title
-  label: title
-  fields:
-  - type: text
-    name: english
-    label: english
-  - type: text
-    name: te_reo_maori
-    label: te_reo_maori
-- type: list
-  name: rows
-  label: rows
-- type: datetime
-  name: publish_date
-  label: publish_date
-- type: list
-  name: keywords
-  label: keywords
+- name: title
+  type: text
+  config:
+    required: true
+    min: 0
+    max: 250
+  label: Title
+  description: The title of this post
+- type: text
+  name: intro
+  label: Intro
+  description: A brief introduction to your post
+  config:
+    required: false
+    min: 0
+    max: 500
 - type: boolean
   name: published
-  label: published
+  label: Published
+- type: datetime
+  name: publish_date
+  label: Publish date
 - type: file
   name: page_image
-  label: page_image
-- type: text
-  name: description
-  label: description
+  label: Page image
+- type: list
+  name: tags
+  label: Tags
