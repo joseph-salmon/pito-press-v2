@@ -26,10 +26,10 @@ sections:
 - type: heading
   label: Collections
 - type: directory
-  path: Products
+  path: site/products
   label: Products
   create: documents
-  match: site/products/*
+  match: "*"
   templates:
   - product
 - type: directory
