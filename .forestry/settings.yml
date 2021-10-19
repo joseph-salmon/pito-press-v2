@@ -19,6 +19,8 @@ sections:
   label: Testimonials
   create: documents
   match: "*"
+  templates:
+  - testimonial
 upload_dir: public/uploads
 public_path: "/uploads"
 front_matter_path: ''
