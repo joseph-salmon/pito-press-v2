@@ -11,7 +11,9 @@ keywords:
 - decolonisation
 - aotearoa
 published: true
-page_image: "/uploads/woodcut.jpg"
+page_image:
+  image: "/uploads/woodcut.jpg"
+  alt_text: Carving
 description: A social enterprise creating tools for learning and unlearning in Aotearoa
 
 ---
