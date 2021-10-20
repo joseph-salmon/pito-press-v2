@@ -3,11 +3,11 @@ module Page.Collection exposing (Data, Model, Msg, data, page)
 import DataSource exposing (DataSource)
 import DataSource.File as File
 import DataSource.Glob as Glob
+import General
 import Head
 import Head.Seo as Seo
 import Html as H exposing (Html)
 import Html.Attributes as Attr
-import Item
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, PageWithState, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
@@ -54,7 +54,7 @@ data =
             }
         )
         pageDecoder
-        Item.itemCollectionData
+        General.itemCollectionData
 
 
 pageDecoder : DataSource String
@@ -94,11 +94,11 @@ view maybeUrl sharedModel static =
             (List.map
                 (\item ->
                     H.li []
-                        [ Route.link 
+                        [ Route.link
                             (Route.Collection__Slug_ { slug = item.slug })
                             []
-                            [ H.text item.title ]  ]
-                        
+                            [ H.text item.title ]
+                        ]
                 )
                 static.data.items
             )

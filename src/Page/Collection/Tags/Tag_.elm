@@ -3,11 +3,11 @@ module Page.Collection.Tags.Tag_ exposing (Data, Model, Msg, page)
 import DataSource exposing (DataSource)
 import DataSource.File as File
 import DataSource.Glob as Glob
+import General
 import Head
 import Head.Seo as Seo
 import Html as H exposing (Html)
 import Html.Attributes as A
-import Item
 import List.Extra exposing (unique)
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, PageWithState, StaticPayload)
@@ -62,24 +62,24 @@ page =
 
 routes : DataSource (List RouteParams)
 routes =
-    Item.itemCollectionData
+    General.itemCollectionData
         |> DataSource.map
             (\items ->
                 items
-                    |> Item.getAllTags
-                    |> Item.getTagSlugs
+                    |> General.getAllTags
+                    |> General.getTagSlugs
                     |> List.map (\slug -> { tag = slug })
             )
 
 
 data : RouteParams -> DataSource Data
 data routeParams =
-    Item.itemCollectionData
+    General.itemCollectionData
         |> DataSource.map
             (\items ->
                 let
                     allTags =
-                        Item.getAllTags items
+                        General.getAllTags items
 
                     title =
                         allTags
@@ -94,7 +94,7 @@ data routeParams =
                                )
 
                     filteredItems =
-                        List.filter (\x -> List.member routeParams.tag <| Item.getTagSlugs x.tags) items
+                        List.filter (\x -> List.member routeParams.tag <| General.getTagSlugs x.tags) items
                 in
                 { title = title
                 , items = filteredItems

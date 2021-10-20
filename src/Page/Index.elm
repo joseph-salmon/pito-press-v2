@@ -51,6 +51,8 @@ decoder =
         (Decode.field "title" Decode.string)
         (Decode.field "rows" <| Decode.list Decode.string)
 
+title
+
 
 head :
     StaticPayload Data RouteParams

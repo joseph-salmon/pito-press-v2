@@ -2,10 +2,10 @@ module Page.Collection.Slug_ exposing (Data, Model, Msg, page)
 
 import DataSource exposing (DataSource)
 import DataSource.File as File
+import General
 import Head
 import Head.Seo as Seo
 import Html as H exposing (Html)
-import Item
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, PageWithState, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
@@ -43,7 +43,7 @@ page =
 
 routes : DataSource (List RouteParams)
 routes =
-    Item.itemCollectionData
+    General.itemCollectionData
         |> DataSource.map
             (\routeParams ->
                 routeParams
@@ -56,7 +56,7 @@ routes =
 
 data : RouteParams -> DataSource Data
 data routeParams =
-    Item.itemSingleData routeParams.slug
+    General.itemSingleData routeParams.slug
 
 
 head :
