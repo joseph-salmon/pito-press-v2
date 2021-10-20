@@ -47,16 +47,28 @@ fields:
 - name: published
   type: boolean
   label: Published
-- name: page_image
-  type: file
-  config:
-    maxSize: 64
-  label: Page image
 - name: keywords
   type: tag_list
   default: []
   label: Keywords
   description: Terms that people might use when searching for this content
+- name: page_image
+  type: field_group
+  config: {}
+  fields:
+  - name: image
+    type: file
+    config:
+      maxSize: 64
+    label: Image
+  - name: alt_text
+    type: text
+    config:
+      required: true
+      min: 0
+      max: 250
+    label: Alt text
+  label: Page image
 pages:
 - site/about.md
 - site/contact.md
