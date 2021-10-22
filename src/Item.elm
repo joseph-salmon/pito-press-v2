@@ -1,4 +1,4 @@
-module Item exposing (..)
+module Item exposing (Item, Tag, getAllTags, getTagSlugs, itemCollectionData, itemDecoder, itemSingleData, tagDecoder)
 
 import DataSource exposing (DataSource)
 import DataSource.File as File
@@ -16,10 +16,10 @@ import View exposing (View)
 
 
 -- Items
-
 -- contains all data definitions fot the Item type
-
 -- TODO: convert body to Markdown
+
+
 type alias Item =
     { body : String
     , slug : String
@@ -27,9 +27,9 @@ type alias Item =
     , tags : List Tag
     }
 
+
 type alias Tag =
     ( String, String )
-
 
 
 itemCollectionData : DataSource (List Item)
@@ -52,7 +52,6 @@ itemCollectionData =
                 )
             )
         |> DataSource.resolve
-
 
 
 itemSingleData : String -> DataSource Item
@@ -79,13 +78,15 @@ getTagSlugs =
 
 
 itemDecoder : String -> String -> Decoder Item
-itemDecoder  slug body =
+itemDecoder slug body =
     Decode.map3 (Item body)
         (Decode.succeed slug)
         (Decode.field "title" Decode.string)
         (Decode.field "tags" <|
             Decode.list (Decode.andThen tagDecoder Decode.string)
         )
+
+
 
 -- Gather all the tags from all items, flatten the list and remove duplicates
 

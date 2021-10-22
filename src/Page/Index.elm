@@ -2,9 +2,11 @@ module Page.Index exposing (Data, Model, Msg, page)
 
 import DataSource exposing (DataSource)
 import DataSource.File as File
+import General
 import Head
 import Head.Seo as Seo
 import Html as H exposing (Html)
+import MarkdownRenderer
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
@@ -26,9 +28,7 @@ type alias RouteParams =
 
 
 type alias Data =
-    { title : String
-    , rows : List String
-    }
+    General.Content
 
 
 page : Page RouteParams Data
@@ -42,16 +42,11 @@ page =
 
 data : DataSource Data
 data =
-    File.onlyFrontmatter decoder "site/index.md"
-
-
-decoder : Decoder Data
-decoder =
-    Decode.map2 Data
-        (Decode.field "title" Decode.string)
-        (Decode.field "rows" <| Decode.list Decode.string)
-
-title
+    File.bodyWithFrontmatter
+        (General.decoder
+            ""
+        )
+        "site/index.md"
 
 
 head :
@@ -80,15 +75,9 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    { title = static.data.title
+    { title = static.data.title.english
     , body =
-        [ H.ul []
-            (List.map
-                (\row ->
-                    H.li []
-                        [ H.text row ]
-                )
-                static.data.rows
-            )
+        [ H.h1 [] [ H.text static.data.title.english ]
+        , H.div [] (MarkdownRenderer.mdToHtml static.data.body)
         ]
     }

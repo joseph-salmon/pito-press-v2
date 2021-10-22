@@ -1,4 +1,4 @@
-module General exposing (Content, Title, getAllTags, getTagSlugs, itemDecoder, itemSingleData, tagDecoder)
+module General exposing (Content, Title, decoder, titleDecoder)
 
 import DataSource exposing (DataSource)
 import DataSource.File as File
@@ -49,46 +49,38 @@ type alias PageImage =
     }
 
 
-itemSingleData : String -> DataSource Content
-itemSingleData filename =
-    File.bodyWithFrontmatter
-        (decoder filename)
-        ("site/" ++ filename ++ ".md")
-
-
 decoder : String -> String -> Decoder Content
 decoder slug body =
-    Decode.map3 (Content body)
+    Decode.map7 (Content body)
         (Decode.succeed slug)
         (Decode.field "title" titleDecoder)
-        (Decode.field "descriptiion" Decode.string)
+        (Decode.field "description" Decode.string)
         (Decode.field "publish_date" Decode.string)
         (Decode.field "keywords" (Decode.list Decode.string))
-        (Decode.field "published" Decode.string) 
+        (Decode.field "published" Decode.bool
             |> Decode.andThen pubStatusDecoder
-    , pageImage : PageImage
-        
+        )
+        (Decode.field "page_image" pageImageDecoder)
+
 
 titleDecoder : Decoder Title
 titleDecoder =
-    Decode.map Title
+    Decode.map2 Title
         (Decode.field "english" Decode.string)
-        (Decode.field "te_reo_maori" Decode.string) 
+        (Decode.field "te_reo_maori" Decode.string)
 
-pubStatusDecoder : String -> Decoder PublishedStatus
+
+pubStatusDecoder : Bool -> Decoder PublishedStatus
 pubStatusDecoder status =
-        case status of
-           "true" ->
-                Published
+    if status == True then
+        Decode.succeed Published
 
-            "false" ->
-                Draft
-
-
+    else
+        Decode.succeed Draft
 
 
 pageImageDecoder : Decoder PageImage
 pageImageDecoder =
-    {
-        
-    }
+    Decode.map2 PageImage
+        (Decode.field "image" Decode.string)
+        (Decode.field "alt_text" Decode.string)

@@ -8,6 +8,7 @@ import Head
 import Head.Seo as Seo
 import Html as H exposing (Html)
 import Html.Attributes as Attr
+import Item
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, PageWithState, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
@@ -40,7 +41,7 @@ page =
 
 
 type alias Data =
-    { title : String
+    { title : General.Title
     , items : List Item.Item
     }
 
@@ -53,13 +54,8 @@ data =
             , items = b
             }
         )
-        pageDecoder
-        General.itemCollectionData
-
-
-pageDecoder : DataSource String
-pageDecoder =
-    File.onlyFrontmatter (Decode.field "title" Decode.string) "site/index.md"
+        (File.onlyFrontmatter (Decode.field "title" General.titleDecoder) "site/index.md")
+        Item.itemCollectionData
 
 
 head :
@@ -90,7 +86,8 @@ view :
 view maybeUrl sharedModel static =
     { title = "Collection"
     , body =
-        [ H.ul []
+        [ H.h1 [] [ H.text static.data.title.english ]
+        , H.ul []
             (List.map
                 (\item ->
                     H.li []

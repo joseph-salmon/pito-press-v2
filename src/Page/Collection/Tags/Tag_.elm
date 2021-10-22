@@ -8,6 +8,7 @@ import Head
 import Head.Seo as Seo
 import Html as H exposing (Html)
 import Html.Attributes as A
+import Item
 import List.Extra exposing (unique)
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, PageWithState, StaticPayload)
@@ -62,24 +63,24 @@ page =
 
 routes : DataSource (List RouteParams)
 routes =
-    General.itemCollectionData
+    Item.itemCollectionData
         |> DataSource.map
             (\items ->
                 items
-                    |> General.getAllTags
-                    |> General.getTagSlugs
+                    |> Item.getAllTags
+                    |> Item.getTagSlugs
                     |> List.map (\slug -> { tag = slug })
             )
 
 
 data : RouteParams -> DataSource Data
 data routeParams =
-    General.itemCollectionData
+    Item.itemCollectionData
         |> DataSource.map
             (\items ->
                 let
                     allTags =
-                        General.getAllTags items
+                        Item.getAllTags items
 
                     title =
                         allTags
@@ -94,7 +95,7 @@ data routeParams =
                                )
 
                     filteredItems =
-                        List.filter (\x -> List.member routeParams.tag <| General.getTagSlugs x.tags) items
+                        List.filter (\x -> List.member routeParams.tag <| Item.getTagSlugs x.tags) items
                 in
                 { title = title
                 , items = filteredItems
