@@ -2,8 +2,10 @@
 title: Test post
 intro: Some introductory text
 published: true
-publish_date: 2021-10-18T11:00:00Z
-page_image: "/uploads/woodcut.jpg"
+publish_date: 2021-10-18T11:00:00.000+00:00
+page_image:
+  image: "/uploads/woodcut.jpg"
+  alt: A Carving
 tags:
 - Tag 3
 - Tag 2
