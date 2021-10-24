@@ -1,9 +1,9 @@
 ---
 nav:
-  - url: ''
-    name: Home
-  - url: collection
-    name: Collection
+- url: ''
+  name: Home
+- url: blog
+  name: Blog
 site-name: Pito Press
 
 ---
