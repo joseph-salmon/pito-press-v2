@@ -4,7 +4,9 @@ hide_body: true
 fields:
 - type: text
   name: site-name
-  label: site-name
+  label: Site name
 - type: list
   name: nav
-  label: nav
+  label: Navigation
+  config:
+    use_select: false
