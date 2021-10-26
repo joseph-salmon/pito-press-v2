@@ -1,16 +1,20 @@
-module Page.Collection.Slug_ exposing (Data, Model, Msg, page)
+module Page.Blog exposing (Data, Model, Msg, data, page)
 
 import DataSource exposing (DataSource)
 import DataSource.File as File
+import DataSource.Glob as Glob
+import General
 import Head
 import Head.Seo as Seo
 import Html as H exposing (Html)
-import Item
+import Html.Attributes as Attr
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, PageWithState, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
-import Route exposing (Route(..), link)
+import Path exposing (..)
+import Post
+import Route
 import Shared
 import View exposing (View)
 
@@ -24,39 +28,34 @@ type alias Msg =
 
 
 type alias RouteParams =
-    { slug : String }
-
-
-type alias Data =
-    Item.Item
+    {}
 
 
 page : Page RouteParams Data
 page =
-    Page.prerender
+    Page.single
         { head = head
-        , routes = routes
         , data = data
         }
         |> Page.buildNoState { view = view }
 
 
-routes : DataSource (List RouteParams)
-routes =
-    Item.itemCollectionData
-        |> DataSource.map
-            (\routeParams ->
-                routeParams
-                    |> List.map
-                        (\route ->
-                            { slug = route.slug }
-                        )
-            )
+type alias Data =
+    { title : Shared.Title
+    , posts : List Post.Post
+    }
 
 
-data : RouteParams -> DataSource Data
-data routeParams =
-    Item.itemSingleData routeParams.slug
+data : DataSource Data
+data =
+    DataSource.map2
+        (\a b ->
+            { title = a
+            , posts = b
+            }
+        )
+        (File.onlyFrontmatter (Decode.field "title" Shared.titleDecoder) "site/index.md")
+        Post.postCollectionData
 
 
 head :
@@ -85,19 +84,20 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    { title = static.data.title
+    { title = "Blog"
     , body =
-        [ H.h1 [] [ H.text static.data.title ]
-        , H.text static.data.body
-        , H.h2 [] [ H.text "Tags" ]
+        [ H.h1 [] [ H.text static.data.title.english ]
         , H.ul []
             (List.map
-                (\( tagsSlug, tagTitle ) ->
+                (\post ->
                     H.li []
-                        [ link (Route.Collection__Tags__Tag_ { tag = tagsSlug }) [] [ H.text tagTitle ]
+                        [ Route.link
+                            (Route.Blog__Slug_ { slug = post.slug })
+                            []
+                            [ H.text post.title ]
                         ]
                 )
-                static.data.tags
+                static.data.posts
             )
         ]
     }

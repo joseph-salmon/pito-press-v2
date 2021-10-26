@@ -1,26 +1,24 @@
-module Page.Collection exposing (Data, Model, Msg, data, page)
+module Page.Blog.Slug_ exposing (Data, Model, Msg, page)
 
 import DataSource exposing (DataSource)
 import DataSource.File as File
-import DataSource.Glob as Glob
-import General
 import Head
 import Head.Seo as Seo
 import Html as H exposing (Html)
-import Html.Attributes as Attr
-import Item
+import MarkdownRenderer
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, PageWithState, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
-import Path exposing (..)
-import Route
+import Post
+import Route exposing (Route(..), link)
 import Shared
+import Task exposing (Task)
 import View exposing (View)
 
 
 type alias Model =
-    ()
+    {}
 
 
 type alias Msg =
@@ -28,34 +26,39 @@ type alias Msg =
 
 
 type alias RouteParams =
-    {}
+    { slug : String }
+
+
+type alias Data =
+    Post.Post
 
 
 page : Page RouteParams Data
 page =
-    Page.single
+    Page.prerender
         { head = head
+        , routes = routes
         , data = data
         }
         |> Page.buildNoState { view = view }
 
 
-type alias Data =
-    { title : General.Title
-    , items : List Item.Item
-    }
+routes : DataSource (List RouteParams)
+routes =
+    Post.postCollectionData
+        |> DataSource.map
+            (\routeParams ->
+                routeParams
+                    |> List.map
+                        (\route ->
+                            { slug = route.slug }
+                        )
+            )
 
 
-data : DataSource Data
-data =
-    DataSource.map2
-        (\a b ->
-            { title = a
-            , items = b
-            }
-        )
-        (File.onlyFrontmatter (Decode.field "title" General.titleDecoder) "site/index.md")
-        Item.itemCollectionData
+data : RouteParams -> DataSource Data
+data routeParams =
+    Post.postSingleData routeParams.slug
 
 
 head :
@@ -84,20 +87,21 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    { title = "Collection"
+    { title = static.data.title
     , body =
-        [ H.h1 [] [ H.text static.data.title.english ]
+        [ H.h1 [] [ H.text static.data.title ]
+
+        -- , H.div [] [ H.text <| Post.printPubDate static.data.publishDate ]
+        , H.div [] (MarkdownRenderer.mdToHtml static.data.body)
+        , H.h2 [] [ H.text "Tags" ]
         , H.ul []
             (List.map
-                (\item ->
+                (\( tagsSlug, tagTitle ) ->
                     H.li []
-                        [ Route.link
-                            (Route.Collection__Slug_ { slug = item.slug })
-                            []
-                            [ H.text item.title ]
+                        [ link (Route.Blog__Tags__Tag_ { tag = tagsSlug }) [] [ H.text tagTitle ]
                         ]
                 )
-                static.data.items
+                static.data.tags
             )
         ]
     }

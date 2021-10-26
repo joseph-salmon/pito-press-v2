@@ -1,4 +1,4 @@
-module General exposing (Content, Title, decoder, titleDecoder)
+module General exposing (Content, decoder)
 
 import DataSource exposing (DataSource)
 import DataSource.File as File
@@ -23,18 +23,12 @@ import View exposing (View)
 type alias Content =
     { body : String
     , slug : String
-    , title : Title
+    , title : Shared.Title
     , description : String
     , publishDate : String
     , keywords : List String
-    , published : PublishedStatus
+    , published : Shared.PublishedStatus
     , pageImage : PageImage
-    }
-
-
-type alias Title =
-    { english : String
-    , teReo : String
     }
 
 
@@ -53,34 +47,11 @@ decoder : String -> String -> Decoder Content
 decoder slug body =
     Decode.map7 (Content body)
         (Decode.succeed slug)
-        (Decode.field "title" titleDecoder)
+        (Decode.field "title" Shared.titleDecoder)
         (Decode.field "description" Decode.string)
         (Decode.field "publish_date" Decode.string)
         (Decode.field "keywords" (Decode.list Decode.string))
         (Decode.field "published" Decode.bool
-            |> Decode.andThen pubStatusDecoder
+            |> Decode.andThen Shared.pubStatusDecoder
         )
-        (Decode.field "page_image" pageImageDecoder)
-
-
-titleDecoder : Decoder Title
-titleDecoder =
-    Decode.map2 Title
-        (Decode.field "english" Decode.string)
-        (Decode.field "te_reo_maori" Decode.string)
-
-
-pubStatusDecoder : Bool -> Decoder PublishedStatus
-pubStatusDecoder status =
-    if status == True then
-        Decode.succeed Published
-
-    else
-        Decode.succeed Draft
-
-
-pageImageDecoder : Decoder PageImage
-pageImageDecoder =
-    Decode.map2 PageImage
-        (Decode.field "image" Decode.string)
-        (Decode.field "alt_text" Decode.string)
+        (Decode.field "page_image" Shared.pageImageDecoder)

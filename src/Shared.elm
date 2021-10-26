@@ -1,4 +1,4 @@
-module Shared exposing (Data, Model, Msg(..), SharedMsg(..), data, template)
+module Shared exposing (Data, Markdown, Model, Msg(..), PageImage, PublishedStatus(..), SharedMsg(..), Title, data, pageImageDecoder, pubStatusDecoder, template, titleDecoder)
 
 import Browser.Navigation
 import DataSource
@@ -48,6 +48,27 @@ type alias NavItem =
     { name : String
     , url : String
     }
+
+
+type alias Title =
+    { english : String
+    , teReo : String
+    }
+
+
+type PublishedStatus
+    = Draft
+    | Published
+
+
+type alias PageImage =
+    { src : String
+    , alt : String
+    }
+
+
+type alias Markdown =
+    String
 
 
 type alias Model =
@@ -107,6 +128,29 @@ navItemDecoder =
     Decode.map2 NavItem
         (Decode.field "name" Decode.string)
         (Decode.field "url" Decode.string)
+
+
+titleDecoder : Decoder Title
+titleDecoder =
+    Decode.map2 Title
+        (Decode.field "english" Decode.string)
+        (Decode.field "te_reo_maori" Decode.string)
+
+
+pubStatusDecoder : Bool -> Decoder PublishedStatus
+pubStatusDecoder status =
+    if status == True then
+        Decode.succeed Published
+
+    else
+        Decode.succeed Draft
+
+
+pageImageDecoder : Decoder PageImage
+pageImageDecoder =
+    Decode.map2 PageImage
+        (Decode.field "image" Decode.string)
+        (Decode.field "alt" Decode.string)
 
 
 view :

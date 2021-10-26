@@ -1,4 +1,4 @@
-module Page.Collection.Tags.Tag_ exposing (Data, Model, Msg, page)
+module Page.Blog.Tags.Tag_ exposing (Data, Model, Msg, page)
 
 import DataSource exposing (DataSource)
 import DataSource.File as File
@@ -8,13 +8,13 @@ import Head
 import Head.Seo as Seo
 import Html as H exposing (Html)
 import Html.Attributes as A
-import Item
 import List.Extra exposing (unique)
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, PageWithState, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
 import Path exposing (..)
+import Post
 import Route
 import Shared
 import View exposing (View)
@@ -40,13 +40,6 @@ type alias Tag =
     ( String, String )
 
 
-type alias Item =
-    { slug : String
-    , title : String
-    , tags : List Tag
-    }
-
-
 page : Page RouteParams Data
 page =
     Page.prerender
@@ -63,24 +56,24 @@ page =
 
 routes : DataSource (List RouteParams)
 routes =
-    Item.itemCollectionData
+    Post.postCollectionData
         |> DataSource.map
-            (\items ->
-                items
-                    |> Item.getAllTags
-                    |> Item.getTagSlugs
+            (\posts ->
+                posts
+                    |> Post.getAllTags
+                    |> Post.getTagSlugs
                     |> List.map (\slug -> { tag = slug })
             )
 
 
 data : RouteParams -> DataSource Data
 data routeParams =
-    Item.itemCollectionData
+    Post.postCollectionData
         |> DataSource.map
-            (\items ->
+            (\posts ->
                 let
                     allTags =
-                        Item.getAllTags items
+                        Post.getAllTags posts
 
                     title =
                         allTags
@@ -94,11 +87,11 @@ data routeParams =
                                             Tuple.second x
                                )
 
-                    filteredItems =
-                        List.filter (\x -> List.member routeParams.tag <| Item.getTagSlugs x.tags) items
+                    filteredPosts =
+                        List.filter (\x -> List.member routeParams.tag <| Post.getTagSlugs x.tags) posts
                 in
                 { title = title
-                , items = filteredItems
+                , posts = filteredPosts
                 }
             )
 
@@ -125,7 +118,7 @@ head static =
 
 type alias Data =
     { title : String
-    , items : List Item.Item
+    , posts : List Post.Post
     }
 
 
@@ -145,9 +138,9 @@ view maybeUrl sharedModel static =
                 (List.map
                     (\item ->
                         H.li []
-                            [ Route.link (Route.Collection__Slug_ { slug = item.slug }) [] [ H.text item.title ] ]
+                            [ Route.link (Route.Blog__Slug_ { slug = item.slug }) [] [ H.text item.title ] ]
                     )
-                    static.data.items
+                    static.data.posts
                 )
             ]
         ]
