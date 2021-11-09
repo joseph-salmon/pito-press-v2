@@ -1,16 +1,18 @@
-module Shared exposing (Data, Model, Msg(..), SharedMsg(..), data, template)
+module Shared exposing (Data, Markdown, Model, Msg(..), PageImage, PublishedStatus(..), SharedMsg(..), Title, data, dateDecoder, pageImageDecoder, pubStatusDecoder, template)
 
 import Browser.Navigation
 import DataSource
 import DataSource.File as File
 import Html exposing (Html)
 import Html.Attributes as Attrs
+import Iso8601
 import OptimizedDecoder as Decode exposing (Decoder)
 import Pages.Flags
 import Pages.PageUrl exposing (PageUrl)
 import Path exposing (Path)
 import Route exposing (Route)
 import SharedTemplate exposing (SharedTemplate)
+import Time
 import View exposing (View)
 
 
@@ -47,6 +49,31 @@ type SharedMsg
 type alias NavItem =
     { name : String
     , url : String
+    }
+
+
+
+-- Common types
+
+
+type alias Markdown =
+    String
+
+
+type alias Title =
+    { english : String
+    , teReo : String
+    }
+
+
+type PublishedStatus
+    = Draft
+    | Published
+
+
+type alias PageImage =
+    { src : String
+    , alt : String
     }
 
 
@@ -107,6 +134,32 @@ navItemDecoder =
     Decode.map2 NavItem
         (Decode.field "name" Decode.string)
         (Decode.field "url" Decode.string)
+
+
+pageImageDecoder : Decoder PageImage
+pageImageDecoder =
+    Decode.map2 PageImage
+        (Decode.field "image" Decode.string)
+        (Decode.field "alt" Decode.string)
+
+
+pubStatusDecoder : Bool -> Decoder PublishedStatus
+pubStatusDecoder status =
+    if status == True then
+        Decode.succeed Published
+
+    else
+        Decode.succeed Draft
+
+
+dateDecoder : String -> Decoder Time.Posix
+dateDecoder datestring =
+    case Iso8601.toTime datestring of
+        Err _ ->
+            Decode.fail "Failure parsing date"
+
+        Ok datetime ->
+            Decode.succeed datetime
 
 
 view :

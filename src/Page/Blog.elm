@@ -1,4 +1,4 @@
-module Page.Collection exposing (Data, Model, Msg, data, page)
+module Page.Blog exposing (Data, Model, Msg, data, page)
 
 import DataSource exposing (DataSource)
 import DataSource.File as File
@@ -8,12 +8,12 @@ import Head
 import Head.Seo as Seo
 import Html as H exposing (Html)
 import Html.Attributes as Attr
-import Item
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, PageWithState, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
 import Path exposing (..)
+import Post
 import Route
 import Shared
 import View exposing (View)
@@ -41,8 +41,8 @@ page =
 
 
 type alias Data =
-    { title : General.Title
-    , items : List Item.Item
+    { title : Shared.Title
+    , posts : List Post.Post
     }
 
 
@@ -51,11 +51,11 @@ data =
     DataSource.map2
         (\a b ->
             { title = a
-            , items = b
+            , posts = b
             }
         )
         (File.onlyFrontmatter (Decode.field "title" General.titleDecoder) "site/index.md")
-        Item.itemCollectionData
+        Post.postCollectionData
 
 
 head :
@@ -84,20 +84,20 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    { title = "Collection"
+    { title = "Blog"
     , body =
         [ H.h1 [] [ H.text static.data.title.english ]
         , H.ul []
             (List.map
-                (\item ->
+                (\post ->
                     H.li []
                         [ Route.link
-                            (Route.Collection__Slug_ { slug = item.slug })
+                            (Route.Blog__Slug_ { slug = post.slug })
                             []
-                            [ H.text item.title ]
+                            [ H.text post.title ]
                         ]
                 )
-                static.data.items
+                static.data.posts
             )
         ]
     }

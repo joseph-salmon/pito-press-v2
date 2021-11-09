@@ -1,4 +1,4 @@
-module Item exposing (Item, Tag, getAllTags, getTagSlugs, itemCollectionData, itemDecoder, itemSingleData, tagDecoder)
+module Post exposing (Post, Tag, getAllTags, getTagSlugs, postCollectionData, postDecoder, postSingleData, tagDecoder)
 
 import DataSource exposing (DataSource)
 import DataSource.File as File
@@ -10,30 +10,39 @@ import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
 import Path exposing (..)
 import Route
-import Shared
+import Shared exposing (..)
+import Time
 import View exposing (View)
 
 
 
--- Items
--- contains all data definitions fot the Item type
+-- Posts
+-- contains all data definitions fot the Post type
 -- TODO: convert body to Markdown
 
 
-type alias Item =
-    { body : String
+type alias Post =
+    { body : Markdown
     , slug : String
     , title : String
+    , intro : String
+    , published : Shared.PublishedStatus
+    , publishDate : Time.Posix
+    , pageImage : Shared.PageImage
     , tags : List Tag
     }
+
+
+type alias Markdown =
+    String
 
 
 type alias Tag =
     ( String, String )
 
 
-itemCollectionData : DataSource (List Item)
-itemCollectionData =
+postCollectionData : DataSource (List Post)
+postCollectionData =
     Glob.succeed
         (\filePath slug ->
             { filePath = filePath
@@ -41,30 +50,30 @@ itemCollectionData =
             }
         )
         |> Glob.captureFilePath
-        |> Glob.match (Glob.literal "site/collection/")
+        |> Glob.match (Glob.literal "site/blog/")
         |> Glob.capture Glob.wildcard
         |> Glob.match (Glob.literal ".md")
         |> Glob.toDataSource
         |> DataSource.map
             (List.map
-                (\item ->
-                    File.bodyWithFrontmatter (itemDecoder item.slug) item.filePath
+                (\post ->
+                    File.bodyWithFrontmatter (postDecoder post.slug) post.filePath
                 )
             )
         |> DataSource.resolve
 
 
-itemSingleData : String -> DataSource Item
-itemSingleData slug =
+postSingleData : String -> DataSource Post
+postSingleData slug =
     File.bodyWithFrontmatter
-        (itemDecoder slug)
-        ("site/collection/" ++ slug ++ ".md")
+        (postDecoder slug)
+        ("site/blog/" ++ slug ++ ".md")
 
 
-getAllTags : List Item -> List Tag
-getAllTags items =
-    items
-        |> List.concatMap (\item -> item.tags)
+getAllTags : List Post -> List Tag
+getAllTags posts =
+    posts
+        |> List.concatMap (\post -> post.tags)
         |> unique
 
 
@@ -77,18 +86,23 @@ getTagSlugs =
     List.map Tuple.first
 
 
-itemDecoder : String -> String -> Decoder Item
-itemDecoder slug body =
-    Decode.map3 (Item body)
+postDecoder : String -> Shared.Markdown -> Decoder Post
+postDecoder slug body =
+    Decode.map7 (Post body)
         (Decode.succeed slug)
         (Decode.field "title" Decode.string)
+        (Decode.field "intro" Decode.string)
+        (Decode.field "published" Decode.bool |> Decode.andThen Shared.pubStatusDecoder)
+        (Decode.field "publish_date" Decode.string |> Decode.andThen Shared.dateDecoder)
+        -- (Decode.field "publish_date" Decode.string)
+        (Decode.field "page_image" Shared.pageImageDecoder)
         (Decode.field "tags" <|
             Decode.list (Decode.andThen tagDecoder Decode.string)
         )
 
 
 
--- Gather all the tags from all items, flatten the list and remove duplicates
+-- Gather all the tags from all posts, flatten the list and remove duplicates
 
 
 tagDecoder : String -> Decoder Tag
