@@ -54,7 +54,7 @@ data =
             , posts = b
             }
         )
-        (File.onlyFrontmatter (Decode.field "title" General.titleDecoder) "site/index.md")
+        (File.onlyFrontmatter (Decode.field "title" Shared.titleDecoder) "site/index.md")
         Post.postCollectionData
 
 

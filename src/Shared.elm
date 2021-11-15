@@ -1,4 +1,4 @@
-module Shared exposing (Data, Markdown, Model, Msg(..), PageImage, PublishedStatus(..), SharedMsg(..), Title, data, dateDecoder, pageImageDecoder, pubStatusDecoder, template)
+module Shared exposing (Data, Markdown, Model, Msg(..), PageImage, PublishedStatus(..), SharedMsg(..), Title, data, dateDecoder, pageImageDecoder, pubStatusDecoder, template, titleDecoder)
 
 import Browser.Navigation
 import DataSource
@@ -134,6 +134,13 @@ navItemDecoder =
     Decode.map2 NavItem
         (Decode.field "name" Decode.string)
         (Decode.field "url" Decode.string)
+
+
+titleDecoder : Decoder Title
+titleDecoder =
+    Decode.map2 Title
+        (Decode.field "english" Decode.string)
+        (Decode.field "te_reo_maori" Decode.string)
 
 
 pageImageDecoder : Decoder PageImage

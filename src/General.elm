@@ -1,4 +1,4 @@
-module General exposing (Content, decoder, titleDecoder)
+module General exposing (Content, decoder)
 
 import DataSource exposing (DataSource)
 import DataSource.File as File
@@ -36,7 +36,7 @@ decoder : String -> String -> Decoder Content
 decoder slug body =
     Decode.map7 (Content body)
         (Decode.succeed slug)
-        (Decode.field "title" titleDecoder)
+        (Decode.field "title" Shared.titleDecoder)
         (Decode.field "description" Decode.string)
         (Decode.field "publish_date" Decode.string)
         (Decode.field "keywords" (Decode.list Decode.string))
@@ -44,10 +44,3 @@ decoder slug body =
             |> Decode.andThen Shared.pubStatusDecoder
         )
         (Decode.field "page_image" Shared.pageImageDecoder)
-
-
-titleDecoder : Decoder Shared.Title
-titleDecoder =
-    Decode.map2 Shared.Title
-        (Decode.field "english" Decode.string)
-        (Decode.field "te_reo_maori" Decode.string)
