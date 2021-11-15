@@ -2,16 +2,13 @@
 label: Product
 hide_body: false
 fields:
-- type: field_group
-  name: title
+- name: title
+  type: text
+  config:
+    required: true
+    min: 0
+    max: 200
   label: Title
-  fields:
-  - type: text
-    name: english
-    label: English
-  - type: text
-    name: te_reo_maori
-    label: Te Reo Māori
 - type: datetime
   name: publish_date
   label: Publish date
