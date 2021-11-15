@@ -1,5 +1,7 @@
 ---
 nav:
+- url: products
+  name: Products
 - url: ''
   name: Home
 - url: blog
