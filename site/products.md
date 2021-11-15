@@ -1,12 +1,14 @@
 ---
-publish_date: 2021-10-19T08:53:20Z
+publish_date: 2021-10-19T08:53:20.000+00:00
 keywords: []
 title:
   english: Products
   te_reo_maori: Ngā taonga
 description: Some of products and services we offer
 published: true
-page_image: ''
+page_image:
+  image: "/uploads/woodcut.jpg"
+  alt: chisel
 
 ---
 Our inaugural product is a perpetual dual calendar to support te reo Māori language learners wanting to understand maramataka. This has been developed in collaboration with Meretini Bennett-Huxtable and te reo Māori translated by Matariki Cribb-Fox. Prototypes have been tested by our iwi partners; Jay Rerekura, Jasmin Ratana, Jo & Graham Cameron and whānau, and Lisa Reweti.
