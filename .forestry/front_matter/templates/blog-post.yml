@@ -24,8 +24,9 @@ fields:
 - type: datetime
   name: publish_date
   label: Publish date
-- type: list
-  name: tags
+- name: tags
+  type: tag_list
+  default: []
   label: Tags
 - name: page_image
   type: field_group
