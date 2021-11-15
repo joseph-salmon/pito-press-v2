@@ -140,15 +140,20 @@ view maybeUrl sharedModel static =
         [ H.h1 []
             [ H.span [] [ H.text "Tags:" ]
             , H.br [] []
-            , H.span [] [ H.text static.data.title ]
-            , H.ul []
-                (List.map
-                    (\post ->
-                        H.li []
-                            [ Route.link (Route.Blog__Slug_ { slug = post.slug }) [] [ H.text post.title ] ]
-                    )
-                    static.data.posts
-                )
+            , H.text static.data.title
             ]
+        , H.ul []
+            (List.map
+                (\post ->
+                    H.li []
+                        [ Route.link (Route.Blog__Slug_ { slug = post.slug })
+                            []
+                            [ H.h2 [] [ H.text post.title ]
+                            , H.text post.intro
+                            ]
+                        ]
+                )
+                static.data.posts
+            )
         ]
     }

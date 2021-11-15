@@ -1,8 +1,10 @@
-module Post exposing (Post, Tag, getAllTags, getTagSlugs, postCollectionData, postDecoder, postSingleData, tagDecoder)
+module Post exposing (Post, Tag, getAllTags, getTagSlugs, postCollectionData, postDecoder, postPreview, postSingleData, tagDecoder)
 
 import DataSource exposing (DataSource)
 import DataSource.File as File
 import DataSource.Glob as Glob
+import Html as H exposing (Html)
+import Html.Attributes as A
 import List.Extra exposing (unique)
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, PageWithState, StaticPayload)
@@ -117,3 +119,16 @@ tagDecoder tag =
     Decode.map2 Tuple.pair
         (Decode.succeed <| slugFormat)
         (Decode.succeed tag)
+
+
+
+-- VIEW FUNCTIONS
+-- Blog preview
+
+
+postPreview : Post -> Html msg
+postPreview post =
+    H.div []
+        [ H.h2 [] [ H.text post.title ]
+        , H.text post.intro
+        ]
