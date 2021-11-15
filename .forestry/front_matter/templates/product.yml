@@ -15,6 +15,7 @@ fields:
 - type: datetime
   name: publish_date
   label: Publish date
+  default: now
 - type: boolean
   name: published
   label: Published
