@@ -61,7 +61,7 @@ fields:
     config:
       maxSize: 64
     label: Image
-  - name: alt_text
+  - name: alt
     type: text
     config:
       required: true
