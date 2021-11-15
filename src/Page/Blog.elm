@@ -7,13 +7,13 @@ import General
 import Head
 import Head.Seo as Seo
 import Html as H exposing (Html)
-import Html.Attributes as Attr
+import Html.Attributes as A
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, PageWithState, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
 import Path exposing (..)
-import Post
+import Post exposing (..)
 import Route
 import Shared
 import View exposing (View)
@@ -94,7 +94,8 @@ view maybeUrl sharedModel static =
                         [ Route.link
                             (Route.Blog__Slug_ { slug = post.slug })
                             []
-                            [ H.text post.title ]
+                            [ Post.postPreview post
+                            ]
                         ]
                 )
                 static.data.posts
