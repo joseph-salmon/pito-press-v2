@@ -13,7 +13,7 @@ keywords:
 published: true
 page_image:
   image: "/uploads/woodcut.jpg"
-  alt_text: Carving
+  alt: Carving
 description: A social enterprise creating tools for learning and unlearning in Aotearoa
 
 ---

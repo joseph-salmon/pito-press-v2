@@ -5,6 +5,7 @@ import DataSource.File as File
 import Head
 import Head.Seo as Seo
 import Html as H exposing (Html)
+import MarkdownRenderer
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, PageWithState, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
@@ -91,8 +92,9 @@ view maybeUrl sharedModel static =
         [ H.h1 [] [ H.text static.data.title ]
 
         -- TODO: Format date
-        , H.p [] [ H.text <| "Published: " ++ (String.fromInt <| Time.toDay Time.utc static.data.publishDate) ++ " " ]
-        , H.text static.data.body
+        -- Day, 13 July 1981
+        , H.p [] [ H.text <| "Published on " ++ Shared.toHumanDate static.data.publishDate ++ " " ]
+        , H.div [] <| MarkdownRenderer.mdToHtml static.data.body
         , H.h2 [] [ H.text "Tags" ]
         , H.ul []
             (List.map

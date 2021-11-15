@@ -1,4 +1,4 @@
-module Shared exposing (Data, Markdown, Model, Msg(..), PageImage, PublishedStatus(..), SharedMsg(..), Title, data, dateDecoder, pageImageDecoder, pubStatusDecoder, template, titleDecoder)
+module Shared exposing (Data, Markdown, Model, Msg(..), PageImage, PublishedStatus(..), SharedMsg(..), Title, data, dateDecoder, pageImageDecoder, pubStatusDecoder, template, titleDecoder, toHumanDate)
 
 import Browser.Navigation
 import DataSource
@@ -12,7 +12,7 @@ import Pages.PageUrl exposing (PageUrl)
 import Path exposing (Path)
 import Route exposing (Route)
 import SharedTemplate exposing (SharedTemplate)
-import Time
+import Time exposing (..)
 import View exposing (View)
 
 
@@ -120,6 +120,98 @@ subscriptions _ _ =
 data : DataSource.DataSource Data
 data =
     File.onlyFrontmatter siteMetaDecoder "site/global.md"
+
+
+
+-- UTITLITY
+-- Date formatting
+
+
+toDay : Time.Weekday -> String
+toDay weekday =
+    case weekday of
+        Mon ->
+            "Monday"
+
+        Tue ->
+            "Tuesday"
+
+        Wed ->
+            "Wednesday"
+
+        Thu ->
+            "Thursday"
+
+        Fri ->
+            "Friday"
+
+        Sat ->
+            "Saturday"
+
+        Sun ->
+            "Sunday"
+
+
+toMonth : Time.Month -> String
+toMonth month =
+    case month of
+        Jan ->
+            "January"
+
+        Feb ->
+            "Febrbuary"
+
+        Mar ->
+            "March"
+
+        Apr ->
+            "April"
+
+        May ->
+            "May"
+
+        Jun ->
+            "June"
+
+        Jul ->
+            "July"
+
+        Aug ->
+            "August"
+
+        Sep ->
+            "September"
+
+        Oct ->
+            "October"
+
+        Nov ->
+            "November"
+
+        Dec ->
+            "December"
+
+
+toHumanDate : Time.Posix -> String
+toHumanDate time =
+    let
+        day =
+            toWeekday Time.utc time |> toDay
+
+        date =
+            String.fromInt <| Time.toDay Time.utc time
+
+        month =
+            Time.toMonth Time.utc time |> toMonth
+
+        year =
+            String.fromInt <| Time.toYear Time.utc time
+    in
+    String.concat [ day, ", ", date, " ", month, " ", year ]
+
+
+
+-- DECODERS
 
 
 siteMetaDecoder : Decoder Data

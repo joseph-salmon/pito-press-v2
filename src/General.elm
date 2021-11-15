@@ -21,7 +21,7 @@ import View exposing (View)
 
 
 type alias Content =
-    { body : String
+    { body : Shared.Markdown
     , slug : String
     , title : Shared.Title
     , description : String
