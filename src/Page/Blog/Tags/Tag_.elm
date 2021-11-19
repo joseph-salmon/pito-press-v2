@@ -14,7 +14,7 @@ import Page exposing (Page, PageWithState, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
 import Path exposing (..)
-import Product
+import Post
 import Route
 import Shared
 import View exposing (View)
@@ -63,24 +63,24 @@ page =
 
 routes : DataSource (List RouteParams)
 routes =
-    Product.postCollectionData
+    Post.postCollectionData
         |> DataSource.map
             (\posts ->
                 posts
-                    |> Product.getAllTags
-                    |> Product.getTagSlugs
+                    |> Post.getAllTags
+                    |> Post.getTagSlugs
                     |> List.map (\slug -> { tag = slug })
             )
 
 
 data : RouteParams -> DataSource Data
 data routeParams =
-    Product.postCollectionData
+    Post.postCollectionData
         |> DataSource.map
             (\posts ->
                 let
                     allTags =
-                        Product.getAllTags posts
+                        Post.getAllTags posts
 
                     title =
                         allTags
@@ -95,7 +95,7 @@ data routeParams =
                                )
 
                     filteredPosts =
-                        List.filter (\x -> List.member routeParams.tag <| Product.getTagSlugs x.tags) posts
+                        List.filter (\x -> List.member routeParams.tag <| Post.getTagSlugs x.tags) posts
                 in
                 { title = title
                 , posts = filteredPosts

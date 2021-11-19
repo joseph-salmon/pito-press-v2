@@ -11,6 +11,8 @@ import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
+import Product
+import Route
 import Shared
 import View exposing (View)
 
@@ -37,16 +39,26 @@ page =
 
 
 type alias Data =
-    General.Content
+    { content : General.Content
+    , products : List Product.Product
+    }
 
 
 data : DataSource Data
 data =
-    File.bodyWithFrontmatter
-        (General.decoder
-            ""
+    DataSource.map2
+        (\a b ->
+            { content = a
+            , products = b
+            }
         )
-        "site/products.md"
+        (File.bodyWithFrontmatter
+            (General.decoder
+                ""
+            )
+            "site/products.md"
+        )
+        Product.productCollectionData
 
 
 head :
@@ -75,9 +87,22 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    { title = static.data.title.english
+    { title = static.data.content.title.english
     , body =
-        [ H.h1 [] [ H.text static.data.title.english ]
-        , H.div [] (MarkdownRenderer.mdToHtml static.data.body)
+        [ H.h1 [] [ H.text static.data.content.title.english ]
+        , H.div [] (MarkdownRenderer.mdToHtml static.data.content.body)
+        , H.ul []
+            (List.map
+                (\product ->
+                    H.li []
+                        [ Route.link
+                            (Route.Products__Slug_ { slug = product.slug })
+                            []
+                            [ Product.productPreview product
+                            ]
+                        ]
+                )
+                static.data.products
+            )
         ]
     }

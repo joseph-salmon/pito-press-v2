@@ -10,7 +10,7 @@ import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, PageWithState, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
-import Product
+import Post
 import Route exposing (Route(..), link)
 import Shared
 import Time
@@ -45,7 +45,7 @@ page =
 
 routes : DataSource (List RouteParams)
 routes =
-    Product.postCollectionData
+    Post.postCollectionData
         |> DataSource.map
             (\routeParams ->
                 routeParams
@@ -58,7 +58,7 @@ routes =
 
 data : RouteParams -> DataSource Data
 data routeParams =
-    Product.postSingleData routeParams.slug
+    Post.postSingleData routeParams.slug
 
 
 head :
