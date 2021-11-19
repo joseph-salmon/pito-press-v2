@@ -1,10 +1,11 @@
-module Page.Blog.Slug_ exposing (Data, Model, Msg, page)
+module Page.Products.Slug_ exposing (Data, Model, Msg, page)
 
 import DataSource exposing (DataSource)
 import DataSource.File as File
 import Head
 import Head.Seo as Seo
 import Html as H exposing (Html)
+import Html.Attributes as A
 import MarkdownRenderer
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, PageWithState, StaticPayload)
@@ -30,7 +31,7 @@ type alias RouteParams =
 
 
 type alias Data =
-    Post.Post
+    Product.Product
 
 
 page : Page RouteParams Data
@@ -45,7 +46,7 @@ page =
 
 routes : DataSource (List RouteParams)
 routes =
-    Product.postCollectionData
+    Product.productCollectionData
         |> DataSource.map
             (\routeParams ->
                 routeParams
@@ -58,7 +59,7 @@ routes =
 
 data : RouteParams -> DataSource Data
 data routeParams =
-    Product.postSingleData routeParams.slug
+    Product.productSingleData routeParams.slug
 
 
 head :
@@ -94,16 +95,10 @@ view maybeUrl sharedModel static =
         -- TODO: Format date
         -- Day, 13 July 1981
         , H.p [] [ H.text <| "Published on " ++ Shared.toHumanDate static.data.publishDate ++ " " ]
-        , H.div [] <| MarkdownRenderer.mdToHtml static.data.body
-        , H.h2 [] [ H.text "Tags" ]
-        , H.ul []
-            (List.map
-                (\( tagsSlug, tagTitle ) ->
-                    H.li []
-                        [ link (Route.Blog__Tags__Tag_ { tag = tagsSlug }) [] [ H.text tagTitle ]
-                        ]
-                )
-                static.data.tags
+        , H.div []
+            (static.data.productImages
+                |> List.map (\image -> H.img [ A.src image.src, A.alt image.alt ] [])
             )
+        , H.div [] <| MarkdownRenderer.mdToHtml static.data.body
         ]
     }
