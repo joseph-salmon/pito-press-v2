@@ -7,6 +7,6 @@ nav:
 - url: blog
   name: Blog
 site-name: Pito Press
-footer: ''
+footer: This is some content for the footer
 
 ---
