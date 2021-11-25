@@ -9,7 +9,10 @@ fields:
   name: nav
   label: Navigation
   config:
-    use_select: false
+    use_select: true
+    source:
+      type: pages
+      section: blog-posts
 - name: footer
   type: textarea
   default: ''
