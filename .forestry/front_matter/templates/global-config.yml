@@ -11,8 +11,8 @@ fields:
   config:
     use_select: true
     source:
-      type: simple
-      section: blog-posts
+      type: pages
+      section: home
 - name: footer
   type: textarea
   default: ''
