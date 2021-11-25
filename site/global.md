@@ -7,5 +7,6 @@ nav:
 - url: blog
   name: Blog
 site-name: Pito Press
+footer: ''
 
 ---

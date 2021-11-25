@@ -19,3 +19,5 @@ fields:
     schema:
       format: markdown
   label: Footer
+pages:
+- site/global.md
