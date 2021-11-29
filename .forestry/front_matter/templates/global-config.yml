@@ -11,7 +11,7 @@ fields:
   config:
     use_select: true
     source:
-      type: pages
+      type: simple
       section: home
 - name: footer
   type: textarea
