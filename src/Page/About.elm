@@ -1,4 +1,4 @@
-module Page.Products exposing (Data, Model, Msg, page)
+module Page.About exposing (Data, Model, Msg, page)
 
 import DataSource exposing (DataSource)
 import DataSource.File as File
@@ -6,14 +6,11 @@ import General
 import Head
 import Head.Seo as Seo
 import Html as H exposing (Html)
-import Html.Attributes as A
 import MarkdownRenderer
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
-import Product
-import Route
 import Shared
 import View exposing (View)
 
@@ -30,6 +27,10 @@ type alias RouteParams =
     {}
 
 
+type alias Data =
+    General.Content
+
+
 page : Page RouteParams Data
 page =
     Page.single
@@ -39,27 +40,13 @@ page =
         |> Page.buildNoState { view = view }
 
 
-type alias Data =
-    { content : General.Content
-    , products : List Product.Product
-    }
-
-
 data : DataSource Data
 data =
-    DataSource.map2
-        (\a b ->
-            { content = a
-            , products = b
-            }
+    File.bodyWithFrontmatter
+        (General.decoder
+            ""
         )
-        (File.bodyWithFrontmatter
-            (General.decoder
-                ""
-            )
-            "site/products.md"
-        )
-        Product.productCollectionData
+        "site/about.md"
 
 
 head :
@@ -68,7 +55,7 @@ head :
 head static =
     Seo.summary
         { canonicalUrlOverride = Nothing
-        , siteName = "elm-pages"
+        , siteName = static.sharedData.siteName
         , image =
             { url = Pages.Url.external "TODO"
             , alt = "elm-pages logo"
@@ -77,7 +64,7 @@ head static =
             }
         , description = "TODO"
         , locale = Nothing
-        , title = "TODO title" -- metadata.title -- TODO
+        , title = static.sharedData.siteName
         }
         |> Seo.website
 
@@ -88,22 +75,9 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    { title = static.data.content.title.english
+    { title = static.data.title.english
     , body =
-        [ H.h1 [] [ H.text static.data.content.title.english ]
-        , H.div [] (MarkdownRenderer.mdToHtml static.data.content.body)
-        , H.ul [ A.class "list pl0" ]
-            (List.map
-                (\product ->
-                    H.li []
-                        [ Route.link
-                            (Route.Products__Slug_ { slug = product.slug })
-                            []
-                            [ Product.productPreview product
-                            ]
-                        ]
-                )
-                static.data.products
-            )
+        [ H.h1 [] [ H.text static.data.title.english ]
+        , H.div [] (MarkdownRenderer.mdToHtml static.data.body)
         ]
     }
