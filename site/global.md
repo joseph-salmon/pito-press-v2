@@ -9,6 +9,6 @@ nav:
 - url: about
   name: About Us
 site-name: Pito Press
-footer: ''
+footer: This is some content for the footer
 
 ---
