@@ -36,3 +36,5 @@ fields:
     max: 10
     labelField: 
   label: Product images
+pages:
+- site/products/mokopuna-books.md
