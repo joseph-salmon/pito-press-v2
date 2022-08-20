@@ -1,8 +1,8 @@
 ---
-publish_date: 2021-10-19T08:32:18Z
+publish_date: 2021-10-19T08:32:18.000+00:00
 keywords: []
 title:
-  english: About
+  english: About and Contact
   te_reo_maori: Ko wai mātou
 description: About Pito Press
 published: false
