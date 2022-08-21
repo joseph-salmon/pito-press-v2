@@ -1,4 +1,4 @@
-module Page.Testimonials exposing (Data, Model, Msg, page)
+module Page.Contact exposing (Data, Model, Msg, page)
 
 import DataSource exposing (DataSource)
 import DataSource.File as File
@@ -6,15 +6,12 @@ import General
 import Head
 import Head.Seo as Seo
 import Html as H exposing (Html)
-import Html.Attributes as A
 import MarkdownRenderer
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
-import Route
 import Shared
-import Testimonial
 import View exposing (View)
 
 
@@ -30,6 +27,10 @@ type alias RouteParams =
     {}
 
 
+type alias Data =
+    General.Content
+
+
 page : Page RouteParams Data
 page =
     Page.single
@@ -39,27 +40,13 @@ page =
         |> Page.buildNoState { view = view }
 
 
-type alias Data =
-    { content : General.Content
-    , testimonials : List Testimonial.Testimonial
-    }
-
-
 data : DataSource Data
 data =
-    DataSource.map2
-        (\a b ->
-            { content = a
-            , testimonials = b
-            }
+    File.bodyWithFrontmatter
+        (General.decoder
+            ""
         )
-        (File.bodyWithFrontmatter
-            (General.decoder
-                ""
-            )
-            "site/testimonials.md"
-        )
-        Testimonial.testimonialCollectionData
+        "site/contact.md"
 
 
 head :
@@ -68,7 +55,7 @@ head :
 head static =
     Seo.summary
         { canonicalUrlOverride = Nothing
-        , siteName = "elm-pages"
+        , siteName = static.sharedData.siteName
         , image =
             { url = Pages.Url.external "TODO"
             , alt = "elm-pages logo"
@@ -77,7 +64,7 @@ head static =
             }
         , description = "TODO"
         , locale = Nothing
-        , title = "TODO title" -- metadata.title -- TODO
+        , title = static.sharedData.siteName
         }
         |> Seo.website
 
@@ -88,19 +75,9 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    { title = static.data.content.title.english
+    { title = static.data.title.english
     , body =
-        [ H.h1 [] [ H.text static.data.content.title.english ]
-        , H.div [] (MarkdownRenderer.mdToHtml static.data.content.body)
-        , H.ul [ A.class "list pl0" ]
-            (List.map
-                (\testimonial ->
-                    H.li []
-                        (H.h2 [] [ H.text testimonial.name ]
-                            :: MarkdownRenderer.mdToHtml testimonial.body
-                        )
-                )
-                static.data.testimonials
-            )
+        [ H.h1 [] [ H.text static.data.title.english ]
+        , H.div [] (MarkdownRenderer.mdToHtml static.data.body)
         ]
     }
