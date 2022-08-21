@@ -4,10 +4,6 @@ auto_deploy: false
 admin_path: 
 webhook_url: 
 sections:
-- type: document
-  path: site/testimonials.md
-  label: Testimonials
-  match: "**/*"
 - type: heading
   label: Global
 - type: document
@@ -21,13 +17,9 @@ sections:
 - type: document
   path: site/products.md
   label: Products & services
-- type: directory
-  path: site/testimonials
+- type: document
+  path: site/testimonials.md
   label: Testimonials
-  create: documents
-  match: "*"
-  templates:
-  - testimonial
 - type: document
   path: site/about.md
   label: About
@@ -36,6 +28,13 @@ sections:
   label: Contact
 - type: heading
   label: Collections
+- type: directory
+  path: site/testimonials
+  label: Testimonials
+  create: documents
+  match: "*"
+  templates:
+  - testimonial
 - type: directory
   path: site/products
   label: Products
