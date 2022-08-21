@@ -41,7 +41,7 @@ page =
 
 
 type alias Data =
-    { title : Shared.Title
+    { content : General.Content
     , posts : List Post.Post
     }
 
@@ -50,11 +50,16 @@ data : DataSource Data
 data =
     DataSource.map2
         (\a b ->
-            { title = a
+            { content = a
             , posts = b
             }
         )
-        (File.onlyFrontmatter (Decode.field "title" Shared.titleDecoder) "site/index.md")
+        (File.bodyWithFrontmatter
+            (General.decoder
+                ""
+            )
+            "site/products.md"
+        )
         Post.postCollectionData
 
 
@@ -66,8 +71,8 @@ head static =
         { canonicalUrlOverride = Nothing
         , siteName = "elm-pages"
         , image =
-            { url = Pages.Url.external "TODO"
-            , alt = "elm-pages logo"
+            { url = static.data.content.pageImage.src
+            , alt = static.data.content.pageImage.alt
             , dimensions = Nothing
             , mimeType = Nothing
             }
@@ -86,7 +91,7 @@ view :
 view maybeUrl sharedModel static =
     { title = "Blog"
     , body =
-        [ H.h1 [] [ H.text static.data.title.english ]
+        [ H.h1 [] [ H.text static.data.content.title.english ]
         , H.ul []
             (List.map
                 (\post ->

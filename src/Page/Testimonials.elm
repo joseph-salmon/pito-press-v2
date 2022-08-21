@@ -1,4 +1,4 @@
-module Page.Products exposing (Data, Model, Msg, page)
+module Page.Testimonials exposing (Data, Model, Msg, page)
 
 import DataSource exposing (DataSource)
 import DataSource.File as File
@@ -57,7 +57,7 @@ data =
             (General.decoder
                 ""
             )
-            "site/products.md"
+            "site/testimonials.md"
         )
         Product.productCollectionData
 
@@ -70,8 +70,8 @@ head static =
         { canonicalUrlOverride = Nothing
         , siteName = "elm-pages"
         , image =
-            { url = static.data.content.pageImage.src
-            , alt = static.data.content.pageImage.alt
+            { url = Pages.Url.external "TODO"
+            , alt = "elm-pages logo"
             , dimensions = Nothing
             , mimeType = Nothing
             }

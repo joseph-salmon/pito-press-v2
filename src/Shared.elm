@@ -9,6 +9,7 @@ import Iso8601
 import OptimizedDecoder as Decode exposing (Decoder)
 import Pages.Flags
 import Pages.PageUrl exposing (PageUrl)
+import Pages.Url as Url
 import Path exposing (Path)
 import Route exposing (Route)
 import SharedTemplate exposing (SharedTemplate)
@@ -72,7 +73,7 @@ type PublishedStatus
 
 
 type alias PageImage =
-    { src : String
+    { src : Url.Url
     , alt : String
     }
 
@@ -238,7 +239,7 @@ titleDecoder =
 pageImageDecoder : Decoder PageImage
 pageImageDecoder =
     Decode.map2 PageImage
-        (Decode.field "image" Decode.string)
+        (Decode.map Url.external (Decode.field "image" Decode.string))
         (Decode.field "alt" Decode.string)
 
 
@@ -274,7 +275,7 @@ view :
 view sharedData page model toMsg pageView =
     { title = pageView.title
     , body =
-        H.div [ A.class "avenir pa4" ]
+        H.div [ A.class "eesti pa3 pa4-l" ]
             [ H.div []
                 [ H.a [ A.href "/", A.title "Home" ] [ H.text "Pito Press" ]
                 ]
@@ -289,6 +290,6 @@ view sharedData page model toMsg pageView =
                         sharedData.navItems
                     )
                 ]
-            , H.main_ [ A.class "mw8 center bg-white pa4" ] pageView.body
+            , H.main_ [ A.class "mw8-l  center bg-white pa0 pa4-l" ] pageView.body
             ]
     }

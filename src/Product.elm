@@ -9,7 +9,7 @@ import List.Extra exposing (unique)
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, PageWithState, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
-import Pages.Url
+import Pages.Url as Url
 import Path exposing (..)
 import Route
 import Shared exposing (..)
@@ -76,7 +76,7 @@ productPreview product =
         featuredImage =
             product.productImages
                 |> List.head
-                |> Maybe.map (\image -> H.img [ A.src image.src, A.alt image.alt ] [])
+                |> Maybe.map (\image -> H.img [ A.src <| Url.toString image.src, A.alt image.alt ] [])
                 |> Maybe.withDefault (H.text "")
     in
     H.div []

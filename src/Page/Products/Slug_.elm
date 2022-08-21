@@ -10,7 +10,7 @@ import MarkdownRenderer
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, PageWithState, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
-import Pages.Url
+import Pages.Url as Url
 import Product
 import Route exposing (Route(..), link)
 import Shared
@@ -66,12 +66,24 @@ head :
     StaticPayload Data RouteParams
     -> List Head.Tag
 head static =
+    let
+        pageImage =
+            case static.data.productImages of
+                [] ->
+                    { src = Url.external "", alt = "" }
+
+                [ x ] ->
+                    x
+
+                x :: xs ->
+                    x
+    in
     Seo.summary
         { canonicalUrlOverride = Nothing
         , siteName = "elm-pages"
         , image =
-            { url = Pages.Url.external "TODO"
-            , alt = "elm-pages logo"
+            { url = pageImage.src
+            , alt = pageImage.alt
             , dimensions = Nothing
             , mimeType = Nothing
             }
@@ -97,7 +109,7 @@ view maybeUrl sharedModel static =
         , H.p [] [ H.text <| "Published on " ++ Shared.toHumanDate static.data.publishDate ++ " " ]
         , H.div []
             (static.data.productImages
-                |> List.map (\image -> H.img [ A.src image.src, A.alt image.alt ] [])
+                |> List.map (\image -> H.img [ A.src <| Url.toString image.src, A.alt image.alt ] [])
             )
         , H.div [] <| MarkdownRenderer.mdToHtml static.data.body
         ]

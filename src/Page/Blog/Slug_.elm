@@ -69,14 +69,14 @@ head static =
         { canonicalUrlOverride = Nothing
         , siteName = "elm-pages"
         , image =
-            { url = Pages.Url.external "TODO"
-            , alt = "elm-pages logo"
+            { url = static.data.pageImage.src
+            , alt = static.data.pageImage.alt
             , dimensions = Nothing
             , mimeType = Nothing
             }
-        , description = "TODO"
+        , description = static.data.intro
         , locale = Nothing
-        , title = "TODO title" -- metadata.title -- TODO
+        , title = static.data.title
         }
         |> Seo.website
 
