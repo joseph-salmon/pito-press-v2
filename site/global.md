@@ -5,7 +5,7 @@ nav:
   title: Products
 - url: testimonials
   name: Testimonials
-  title: ''
+  title: Testimonials
 - url: about
   name: About Us
   title: ''
