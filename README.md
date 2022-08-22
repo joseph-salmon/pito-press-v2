@@ -1,6 +1,4 @@
-# Elm Pages website template
-
-A basic website template
+# Pito Press website
 
 ## Features
 
