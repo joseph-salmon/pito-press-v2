@@ -5,7 +5,7 @@ fields:
 - type: text
   name: site-name
   label: Site name
-- name: navigation
+- name: nav
   type: field_group_list
   fields:
   - name: title
@@ -22,7 +22,7 @@ fields:
     min: 
     max: 
     labelField: 
-  label: navigation
+  label: Navigation
 - name: footer
   type: textarea
   default: ''
