@@ -11,7 +11,7 @@ nav:
   title: About
 - url: contact
   name: Contact
-  title: ''
+  title: Contact
 site-name: Pito Press
 footer: This is some content for the footer
 
