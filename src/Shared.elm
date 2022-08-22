@@ -48,7 +48,7 @@ type SharedMsg
 
 
 type alias NavItem =
-    { name : String
+    { title : String
     , url : String
     }
 
@@ -225,7 +225,7 @@ siteMetaDecoder =
 navItemDecoder : Decoder NavItem
 navItemDecoder =
     Decode.map2 NavItem
-        (Decode.field "name" Decode.string)
+        (Decode.field "title" Decode.string)
         (Decode.field "url" Decode.string)
 
 
@@ -282,9 +282,9 @@ view sharedData page model toMsg pageView =
             , H.nav []
                 [ H.ul [ A.class "list dib pl0" ]
                     (List.map
-                        (\a ->
+                        (\item ->
                             H.li []
-                                [ H.a [ A.href <| "/" ++ a.url ] [ H.text a.name ]
+                                [ H.a [ A.href <| "/" ++ item.url ] [ H.text item.title ]
                                 ]
                         )
                         sharedData.navItems
