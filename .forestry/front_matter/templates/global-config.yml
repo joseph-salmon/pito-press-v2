@@ -5,14 +5,24 @@ fields:
 - type: text
   name: site-name
   label: Site name
-- type: list
-  name: nav
-  label: Navigation
+- name: navigation
+  type: field_group_list
+  fields:
+  - name: title
+    type: text
+    config:
+      required: false
+    label: Title
+  - name: url
+    type: text
+    config:
+      required: false
+    label: URL
   config:
-    use_select: true
-    source:
-      type: simple
-      section: home
+    min: 
+    max: 
+    labelField: 
+  label: navigation
 - name: footer
   type: textarea
   default: ''
