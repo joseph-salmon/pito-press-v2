@@ -1,11 +1,11 @@
 ---
 nav:
-- url: products
-  name: Products
-  title: Products
 - url: testimonials
   name: Testimonials
   title: Testimonials
+- url: products
+  name: Products
+  title: Products
 - url: about
   name: About Us
   title: About
