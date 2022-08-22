@@ -8,7 +8,7 @@ nav:
   title: Testimonials
 - url: about
   name: About Us
-  title: ''
+  title: About
 - url: contact
   name: Contact
   title: ''
