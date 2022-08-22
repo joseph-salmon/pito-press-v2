@@ -1,7 +1,6 @@
 ---
 nav:
 - url: products
-  name: Products
   title: Products
 - url: testimonials
   title: Testimonials
