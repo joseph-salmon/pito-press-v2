@@ -1,9 +1,7 @@
 module MarkdownRenderer exposing (htmlRenderer, mdToHtml)
 
-import Browser
-import Html as H exposing (Attribute, Html, div, text)
+import Html as H exposing (Html)
 import Html.Attributes as A
-import Html.Events
 import Markdown.Block as Block
 import Markdown.Html
 import Markdown.Parser as Markdown
@@ -168,7 +166,7 @@ htmlRenderer =
                         |> Maybe.map List.singleton
                         |> Maybe.withDefault []
             in
-            H.th ([ A.class "fw6 bb b--black-20 tl pb3 pr3 bg-white" ] ++ attrs)
+            H.th (A.class "fw6 bb b--black-20 tl pb3 pr3 bg-white" :: attrs)
     , tableCell =
         \maybeAlignment ->
             let
@@ -190,7 +188,7 @@ htmlRenderer =
                         |> Maybe.map List.singleton
                         |> Maybe.withDefault []
             in
-            H.td ([ A.class "pv3 pr3 bb b--black-20" ] ++ attrs)
+            H.td (A.class "pv3 pr3 bb b--black-20" :: attrs)
     }
 
 
