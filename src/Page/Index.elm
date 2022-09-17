@@ -78,6 +78,6 @@ view :
 view maybeUrl sharedModel static =
     { title = static.data.title.english
     , body =
-        [ H.div [ A.class "f3" ] (MarkdownRenderer.mdToHtml static.data.body)
+        [ Shared.homeView static.data.description static.data.body
         ]
     }

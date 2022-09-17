@@ -1,4 +1,4 @@
-module Shared exposing (Data, Markdown, Model, Msg(..), PageImage, PublishedStatus(..), SharedMsg(..), Title, data, dateDecoder, pageImageDecoder, pubStatusDecoder, template, titleDecoder, toHumanDate)
+module Shared exposing (Data, Markdown, Model, Msg(..), PageImage, PublishedStatus(..), SharedMsg(..), Title, data, dateDecoder, homeView, pageImageDecoder, pubStatusDecoder, template, titleDecoder, toHumanDate)
 
 import Browser.Navigation
 import DataSource
@@ -6,6 +6,7 @@ import DataSource.File as File
 import Html as H exposing (Html)
 import Html.Attributes as A
 import Iso8601
+import MarkdownRenderer
 import OptimizedDecoder as Decode exposing (Decoder)
 import Pages.Flags
 import Pages.PageUrl exposing (PageUrl)
@@ -275,21 +276,33 @@ view :
 view sharedData page model toMsg pageView =
     { title = pageView.title
     , body =
-        H.div [ A.class "eesti pa3 pa4-l" ]
-            [ H.div []
-                [ H.a [ A.href "/", A.title "Home" ] [ H.text "Pito Press" ]
-                ]
-            , H.nav []
-                [ H.ul [ A.class "list dib pl0" ]
+        H.div [ A.class "sans-serif" ]
+            [ H.nav [ A.class "f4 pa0 pa4-l pa3 bg-gold " ]
+                [ H.div [ A.class "w-50 fl" ]
+                    [ H.a [ A.class "black link", A.href "/", A.title "Home" ] [ H.text "Pito Press" ] ]
+                , H.ul [ A.class "list dib pa0 ma0 cf w-50" ]
                     (List.map
                         (\item ->
                             H.li []
-                                [ H.a [ A.href <| "/" ++ item.url ] [ H.text item.title ]
+                                [ H.a [ A.class "black link", A.href <| "/" ++ item.url ] [ H.text item.title ]
                                 ]
                         )
                         sharedData.navItems
                     )
                 ]
-            , H.main_ [ A.class "mw8-l  center bg-white pa0 pa4-l" ] pageView.body
+            , H.main_ [ A.class "mw7-l mw7-m center" ] pageView.body
             ]
     }
+
+
+
+-- LAYOUTS
+-- Home page
+
+
+homeView : String -> Markdown -> H.Html msg
+homeView desc body =
+    H.div []
+        [ H.div [ A.class "f-headline-l f-subheadline-m f1 vh-80 pv5 pv6-m pv6-l ph3 navy" ] [ H.text desc ]
+        , H.div [ A.class "f3 pa3" ] (MarkdownRenderer.mdToHtml body)
+        ]
