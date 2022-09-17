@@ -17,8 +17,7 @@ page_image:
 description: Tools for learning and unlearning in Aotearoa
 
 ---
-## Nau mai   
-Welcome
+## Nau mai / welcome
 
 Pito Press is a social enterprise creating tools for learning and unlearning in Aotearoa. 
 
