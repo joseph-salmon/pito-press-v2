@@ -23,4 +23,5 @@ fields:
   label: Testimonial text
   description: The testimonial
 pages:
+- site/testimonials/Miriam.md
 - site/testimonials/Thrive.md
