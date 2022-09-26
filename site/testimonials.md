@@ -2,7 +2,7 @@
 publish_date: 2022-08-21T08:53:20.000+00:00
 keywords: []
 title:
-  english: Testimonials
+  english: Media & Testimonials
   te_reo_maori: Ngā taunaki
 description: We acknowledge our role as tāngata Tiriti, we are manuhiri with no birthright
   to the Māori language. Therefore we are guided and informed by hoa haere and tāngata
