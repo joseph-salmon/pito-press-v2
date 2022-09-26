@@ -11,18 +11,6 @@ fields:
     max: 250
   label: Name
   description: The name of the referee
-- name: testimonial_text
-  type: textarea
-  default: ''
-  config:
-    required: true
-    wysiwyg: true
-    schema:
-      format: markdown
-    min: 0
-    max: 1000
-  label: Testimonial text
-  description: The testimonial
 pages:
 - site/testimonials/Miriam.md
 - site/testimonials/Thrive.md
