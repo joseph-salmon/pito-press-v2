@@ -12,7 +12,8 @@ import Pages.Flags
 import Pages.PageUrl exposing (PageUrl)
 import Pages.Url as Url
 import Path exposing (Path)
-import Route exposing (Route)
+import Phosphor exposing (IconWeight(..))
+import Route exposing (Route(..))
 import SharedTemplate exposing (SharedTemplate)
 import Time exposing (..)
 import View exposing (View)
@@ -41,6 +42,7 @@ type Msg
 type alias Data =
     { navItems : List NavItem
     , siteName : String
+    , socialIcons : List SocialIcon
     }
 
 
@@ -51,6 +53,12 @@ type SharedMsg
 type alias NavItem =
     { title : String
     , url : String
+    }
+
+
+type alias SocialIcon =
+    { url : String
+    , icon : String
     }
 
 
@@ -218,9 +226,10 @@ toHumanDate time =
 
 siteMetaDecoder : Decoder Data
 siteMetaDecoder =
-    Decode.map2 Data
+    Decode.map3 Data
         (Decode.field "nav" (Decode.list navItemDecoder))
         (Decode.field "site-name" Decode.string)
+        (Decode.field "social_links" (Decode.list socialIconDecoder))
 
 
 navItemDecoder : Decoder NavItem
@@ -228,6 +237,13 @@ navItemDecoder =
     Decode.map2 NavItem
         (Decode.field "title" Decode.string)
         (Decode.field "url" Decode.string)
+
+
+socialIconDecoder : Decoder SocialIcon
+socialIconDecoder =
+    Decode.map2 SocialIcon
+        (Decode.field "url" Decode.string)
+        (Decode.field "icon" Decode.string)
 
 
 titleDecoder : Decoder Title
@@ -263,6 +279,37 @@ dateDecoder datestring =
             Decode.succeed datetime
 
 
+buildTitle : Route -> View msg -> { title : Maybe String, subtitle : Maybe String }
+buildTitle route pageView =
+    case route of
+        Blog__Tags__Tag_ _ ->
+            { title = Just "Blog", subtitle = Just pageView.title }
+
+        Blog__Slug_ _ ->
+            { title = Just "Blog", subtitle = Just pageView.title }
+
+        Products__Slug_ _ ->
+            { title = Just "Products", subtitle = Just pageView.title }
+
+        About ->
+            { title = Just pageView.title, subtitle = Nothing }
+
+        Blog ->
+            { title = Just pageView.title, subtitle = Nothing }
+
+        Contact ->
+            { title = Just pageView.title, subtitle = Nothing }
+
+        Products ->
+            { title = Just pageView.title, subtitle = Nothing }
+
+        Testimonials ->
+            { title = Just pageView.title, subtitle = Nothing }
+
+        Index ->
+            { title = Just pageView.title, subtitle = Nothing }
+
+
 view :
     Data
     ->
@@ -272,27 +319,73 @@ view :
     -> Model
     -> (Msg -> msg)
     -> View msg
-    -> { body : Html msg, title : String }
+    -> { title : String, body : Html msg }
 view sharedData page model toMsg pageView =
+    let
+        title =
+            buildTitle (Maybe.withDefault Index page.route) pageView
+    in
     { title = pageView.title
     , body =
         H.div [ A.class "sans-serif" ]
-            [ H.nav [ A.class "f4 pa0 pa4-l pa3 bg-gold " ]
-                [ H.div [ A.class "w-50 fl" ]
+            [ H.nav [ A.class "f4 pa0 pa4-l pa3 bg-gold" ]
+                [ H.div [ A.class "absolute" ]
                     [ H.a [ A.class "black link", A.href "/", A.title "Home" ] [ H.text "Pito Press" ] ]
-                , H.ul [ A.class "list dib pa0 ma0 cf w-50" ]
-                    (List.map
-                        (\item ->
-                            H.li []
-                                [ H.a [ A.class "black link", A.href <| "/" ++ item.url ] [ H.text item.title ]
-                                ]
+                , H.div [ A.class "mw7-l mw7-m center ph3" ]
+                    [ H.ul [ A.class "list dib pa0 ma0" ]
+                        (List.map
+                            (\item ->
+                                H.li []
+                                    [ H.a [ A.class "black link", A.href <| "/" ++ item.url ] [ H.text item.title ]
+                                    ]
+                            )
+                            sharedData.navItems
                         )
-                        sharedData.navItems
+                    , H.div [ A.class " " ]
+                        [ if pageView.title == "Home" then
+                            H.text ""
+
+                          else
+                            H.h1 [ A.class "normal lh-solid f1 mb0" ]
+                                (case title.subtitle of
+                                    Just a ->
+                                        [ H.span [ A.class ""] [ H.text <| Maybe.withDefault "" title.title  ++ ":" ]
+                                        , H.br [] []
+                                        , H.text a
+                                        ]
+
+                                    Nothing ->
+                                        [ H.text <| Maybe.withDefault "" title.title ]
+                                )
+                        ]
+                    ]
+                ]
+            , H.main_ [ A.class "mw7-l mw7-m center pv5 ph3" ]
+                [ H.div [] pageView.body
+                ]
+            , H.footer [ A.class "bg-navy " ]
+                [ H.div [ A.class "pv5 pv6-m pv6-l mw7-l mw7-m center" ]
+                    (List.map
+                        (\a ->
+                            H.div []
+                                [ H.a [ A.class "white", A.href a.url, A.target "_blank" ] [ insta ] ]
+                        )
+                        sharedData.socialIcons
                     )
                 ]
-            , H.main_ [ A.class "mw7-l mw7-m center" ] pageView.body
             ]
     }
+
+
+
+-- ICONS
+
+
+insta : Html msg
+insta =
+    Phosphor.instagramLogo Bold
+        |> Phosphor.withSize 2
+        |> Phosphor.toHtml []
 
 
 
@@ -303,6 +396,6 @@ view sharedData page model toMsg pageView =
 homeView : String -> Markdown -> H.Html msg
 homeView desc body =
     H.div []
-        [ H.div [ A.class "f-headline-l f-subheadline-m f1 vh-80 pv5 pv6-m pv6-l ph3 navy" ] [ H.text desc ]
-        , H.div [ A.class "f3 pa3" ] (MarkdownRenderer.mdToHtml body)
+        [ H.div [ A.class "f-headline-l f-subheadline-m f1 vh-80 pv5 pv6-m pv4-l navy lh-solid" ] [ H.text desc ]
+        , H.div [] (MarkdownRenderer.mdToHtml body)
         ]

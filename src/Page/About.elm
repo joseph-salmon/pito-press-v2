@@ -77,7 +77,6 @@ view :
 view maybeUrl sharedModel static =
     { title = static.data.title.english
     , body =
-        [ H.h1 [] [ H.text static.data.title.english ]
-        , H.div [] (MarkdownRenderer.mdToHtml static.data.body)
+        [ H.div [] (MarkdownRenderer.mdToHtml static.data.body)
         ]
     }

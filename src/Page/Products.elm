@@ -11,8 +11,8 @@ import MarkdownRenderer
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
-import Pages.Url
-import Product
+import Pages.Url as Url
+import Product exposing (Product)
 import Route
 import Shared
 import View exposing (View)
@@ -88,22 +88,45 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
+    let  selectWidth =
+            if (List.length static.data.products) > 1 then
+                "w-50"
+
+            else
+                "w-100"
+
+    in
     { title = static.data.content.title.english
     , body =
-        [ H.h1 [] [ H.text static.data.content.title.english ]
-        , H.div [] (MarkdownRenderer.mdToHtml static.data.content.body)
-        , H.ul [ A.class "list pl0" ]
+        [ H.div [] (MarkdownRenderer.mdToHtml static.data.content.body)
+        , H.ul [ A.class "list pl0 cf w-100" ]
             (List.map
                 (\product ->
-                    H.li []
+                    H.li [ A.class <| String.concat [selectWidth, " ", "pa2 fl"] ]
                         [ Route.link
                             (Route.Products__Slug_ { slug = product.slug })
                             []
-                            [ Product.productPreview product
-                            ]
+                            (productPreview product )
+                            
                         ]
                 )
                 static.data.products
             )
         ]
     }
+
+productPreview : Product -> List (Html msg)
+productPreview product =
+    let
+        featuredImage =
+            product.productImages
+                |> List.head
+                |> Maybe.map (\image -> H.img [ A.src <| Url.toString image.src, A.alt image.alt ] [])
+                |> Maybe.withDefault (H.text "")
+
+        
+    in
+        [ H.div [ ]
+            [ featuredImage ]
+        , H.h2 [ A.class "link normal f3 ma0" ] [ H.text product.title ]
+        ]

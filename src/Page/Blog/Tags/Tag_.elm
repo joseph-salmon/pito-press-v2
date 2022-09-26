@@ -137,12 +137,7 @@ view :
 view maybeUrl sharedModel static =
     { title = "Tag: " ++ static.data.title
     , body =
-        [ H.h1 []
-            [ H.span [] [ H.text "Tags:" ]
-            , H.br [] []
-            , H.text static.data.title
-            ]
-        , H.ul []
+        [ H.ul []
             (List.map
                 (\post ->
                     H.li []

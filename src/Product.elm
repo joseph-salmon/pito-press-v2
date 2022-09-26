@@ -1,4 +1,4 @@
-module Product exposing (Product, productCollectionData, productDecoder, productPreview, productSingleData)
+module Product exposing (Product, productCollectionData, productDecoder, productSingleData)
 
 import DataSource exposing (DataSource)
 import DataSource.File as File
@@ -70,17 +70,4 @@ productDecoder slug body =
         (Decode.field "product_images" (Decode.list Shared.pageImageDecoder))
 
 
-productPreview : Product -> Html msg
-productPreview product =
-    let
-        featuredImage =
-            product.productImages
-                |> List.head
-                |> Maybe.map (\image -> H.img [ A.src <| Url.toString image.src, A.alt image.alt ] [])
-                |> Maybe.withDefault (H.text "")
-    in
-    H.div []
-        [ H.div []
-            [ featuredImage ]
-        , H.h2 [] [ H.text product.title ]
-        ]
+

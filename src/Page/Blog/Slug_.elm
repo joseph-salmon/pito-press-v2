@@ -89,12 +89,9 @@ view :
 view maybeUrl sharedModel static =
     { title = static.data.title
     , body =
-        [ H.h1 [] [ H.text static.data.title ]
-
-        -- TODO: Format date
-        -- Day, 13 July 1981
-        , H.p [] [ H.text <| "Published on " ++ Shared.toHumanDate static.data.publishDate ++ " " ]
-        , H.div [] <| MarkdownRenderer.mdToHtml static.data.body
+        [ -- TODO: Format date
+          -- Day, 13 July 1981H.p [] [ H.text <| "Published on " ++ Shared.toHumanDate static.data.publishDate ++ " " ]
+          H.div [] <| MarkdownRenderer.mdToHtml static.data.body
         , H.h2 [] [ H.text "Tags" ]
         , H.ul []
             (List.map

@@ -90,8 +90,7 @@ view :
 view maybeUrl sharedModel static =
     { title = static.data.content.title.english
     , body =
-        [ H.h1 [] [ H.text static.data.content.title.english ]
-        , H.div [] (MarkdownRenderer.mdToHtml static.data.content.body)
+        [ H.div [] (MarkdownRenderer.mdToHtml static.data.content.body)
         , H.ul [ A.class "list pl0" ]
             (List.map
                 (\testimonial ->

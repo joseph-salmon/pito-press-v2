@@ -102,11 +102,9 @@ view :
 view maybeUrl sharedModel static =
     { title = static.data.title
     , body =
-        [ H.h1 [] [ H.text static.data.title ]
-
-        -- TODO: Format date
-        -- Day, 13 July 1981
-        , H.p [] [ H.text <| "Published on " ++ Shared.toHumanDate static.data.publishDate ++ " " ]
+        [ -- TODO: Format date
+          -- Day, 13 July 1981
+          H.p [] [ H.text <| "Published on " ++ Shared.toHumanDate static.data.publishDate ++ " " ]
         , H.div []
             (static.data.productImages
                 |> List.map (\image -> H.img [ A.src <| Url.toString image.src, A.alt image.alt ] [])
