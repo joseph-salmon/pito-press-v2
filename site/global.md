@@ -16,6 +16,6 @@ social_links:
   network: Facebook
 - url: https://www.instagram.com/pito_press/
   icon: ''
-  network: ''
+  network: Instagram
 
 ---
