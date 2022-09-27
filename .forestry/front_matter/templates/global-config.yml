@@ -41,12 +41,21 @@ fields:
       required: true
     label: URL
     description: The web URL to this social account
-  - name: icon
-    type: file
+  - name: network
+    type: select
+    default: []
     config:
-      maxSize: 64
-    label: Icon
-    description: The icon file to use for this social account
+      required: false
+      options:
+      - Facebook
+      - Instagram
+      - Twitter
+      source:
+        type: simple
+        section: 
+        file: 
+        path: 
+    label: Network
   config:
     min: 
     max: 
