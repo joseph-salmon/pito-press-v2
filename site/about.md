@@ -4,7 +4,7 @@ keywords: []
 title:
   english: About
   te_reo_maori: Ko wai mātou
-description: We are Kay Benseman and Joe Salmon, co-founders of Pito Press*, a social
+description: We are Kay Benseman and Joe Salmon, co-founders of Pito Press, a social
   enterprise creating tools for learning and unlearning in Aotearoa.
 published: false
 page_image:
