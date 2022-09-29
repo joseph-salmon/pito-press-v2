@@ -1,5 +1,5 @@
 ---
-publish_date: 2021-10-19T08:19:37Z
+publish_date: 2021-10-19T08:19:37.000+00:00
 keywords: []
 title:
   english: Contact
@@ -7,7 +7,15 @@ title:
 published: true
 description: How to get in touch
 page_image:
-  image: ""
-  alt: ""
+  image: ''
+  alt: ''
+
 ---
-110 Matai Street, Castlecliff, Whanganui 4501
+Īmēra / Email
+
+**kay@pitopress.co.nz**
+
+Wāea / Phone
+
+**Kay: +64 27 2565 912  
+Joe: +64 21 2061 602**
