@@ -9,6 +9,17 @@ fields:
     min: 0
     max: 200
   label: Title
+- name: description
+  type: textarea
+  default: ''
+  config:
+    required: true
+    wysiwyg: false
+    schema:
+      format: markdown
+    min: 0
+    max: 1000
+  label: Description
 - type: datetime
   name: publish_date
   label: Publish date
