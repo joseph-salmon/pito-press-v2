@@ -11,11 +11,11 @@ page_image:
   alt: ''
 
 ---
-Īmēra / Email
+## Īmēra / Email
 
 **kay@pitopress.co.nz**
 
-Wāea / Phone
+## Wāea / Phone
 
 **Kay: +64 27 2565 912  
 Joe: +64 21 2061 602**
