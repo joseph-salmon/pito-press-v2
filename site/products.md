@@ -11,4 +11,26 @@ page_image:
   alt: chisel
 
 ---
-Some info about our products
+## Research
+
+Interviews, surveys, archival, histories, evaluation, family history
+
+## Writing
+
+Reviews, evaluation, reports, grant applications, media releases, social media, narrative, communications content strategy, creative, education resources, historical
+
+## Design
+
+* Photography
+* Visual identities - logo, branding/guidelines, typography
+* Print publications - flyers, brochures, annual reports, booklets, exhibition catalogues
+* Large scale graphics
+* Websites - portfolio, marketing, blogs, e-commerce
+* Typesetting
+* Book design
+* Advertising and promotional materials - business stationery, print media ads, signage
+* Photo editing
+* Cartography
+* Bespoke publications
+* Education resources
+* Typeface design
