@@ -11,7 +11,7 @@ import MarkdownRenderer
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
-import Pages.Url
+import Pages.Url as Url
 import Shared
 import View exposing (View)
 
@@ -58,12 +58,12 @@ head static =
         { canonicalUrlOverride = Nothing
         , siteName = static.sharedData.siteName
         , image =
-            { url = Pages.Url.external "TODO"
-            , alt = "elm-pages logo"
+            { url = Url.external ""
+            , alt = ""
             , dimensions = Nothing
             , mimeType = Nothing
             }
-        , description = "TODO"
+        , description = static.data.description
         , locale = Nothing
         , title = static.sharedData.siteName
         }
@@ -76,9 +76,12 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    { title = static.data.title.english
+    { title = String.concat [ static.data.title.teReo, " / ", static.data.title.english] 
     , body =
-        [ H.div [ A.class "f3" ] (MarkdownRenderer.mdToHtml static.data.description)
+        [ H.div [] [
+            H.img [ A.src <| Url.toString static.data.pageImage.src, A.alt static.data.pageImage.alt] []
+         ]
+        , H.div [ A.class "f3" ] (MarkdownRenderer.mdToHtml static.data.description)
         , H.div [] (MarkdownRenderer.mdToHtml static.data.body)
         ]
     }

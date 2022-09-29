@@ -68,16 +68,16 @@ head :
 head static =
     Seo.summary
         { canonicalUrlOverride = Nothing
-        , siteName = "elm-pages"
+        , siteName = "Pito Press"
         , image =
             { url = static.data.content.pageImage.src
             , alt = static.data.content.pageImage.alt
             , dimensions = Nothing
             , mimeType = Nothing
             }
-        , description = "TODO"
+        , description = static.data.content.description
         , locale = Nothing
-        , title = "TODO title" -- metadata.title -- TODO
+        , title = "Products"
         }
         |> Seo.website
 
@@ -96,7 +96,7 @@ view maybeUrl sharedModel static =
                 "w-100"
 
     in
-    { title = static.data.content.title.english
+    { title = String.concat [ static.data.content.title.teReo, " / ", static.data.content.title.english]
     , body =
         [ H.div [] (MarkdownRenderer.mdToHtml static.data.content.body)
         , H.ul [ A.class "list pl0 cf w-100" ]
@@ -121,12 +121,13 @@ productPreview product =
         featuredImage =
             product.productImages
                 |> List.head
-                |> Maybe.map (\image -> H.img [ A.src <| Url.toString image.src, A.alt image.alt ] [])
+                |> Maybe.map (\image -> H.img [ A.src <| Url.toString image.src, A.alt image.alt] [])
                 |> Maybe.withDefault (H.text "")
 
         
     in
-        [ H.div [ ]
-            [ featuredImage ]
-        , H.h2 [ A.class "link normal f3 ma0" ] [ H.text product.title ]
+        [ H.div [ A.class "dim"]
+            [ featuredImage
+            , H.h2 [ A.class "link navy normal f3 ma0" ] [ H.text product.title ] ]
+        
         ]

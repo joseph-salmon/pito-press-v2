@@ -58,12 +58,12 @@ head static =
         { canonicalUrlOverride = Nothing
         , siteName = static.sharedData.siteName
         , image =
-            { url = Pages.Url.external "TODO"
-            , alt = "elm-pages logo"
+            { url = Pages.Url.external ""
+            , alt = ""
             , dimensions = Nothing
             , mimeType = Nothing
             }
-        , description = "TODO"
+        , description = ""
         , locale = Nothing
         , title = static.sharedData.siteName
         }
@@ -76,7 +76,7 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    { title = static.data.title.english
+    { title = String.concat [ static.data.title.teReo, " / ", static.data.title.english] 
     , body =
         [ H.div [] (MarkdownRenderer.mdToHtml static.data.body)
         ]

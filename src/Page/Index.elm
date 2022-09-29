@@ -76,7 +76,7 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    { title = static.data.title.english
+    { title = String.concat [ static.data.title.teReo, " / ", static.data.title.english]
     , body =
         [ H.div []
             [ H.div [ A.class "f-headline-l f-subheadline-m f1  pv4 pv5-l lh-solid" ]

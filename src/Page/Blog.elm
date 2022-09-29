@@ -89,10 +89,9 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    { title = "Blog"
+    { title = String.concat [ static.data.content.title.teReo, " / ", static.data.content.title.english]
     , body =
-        [ H.h1 [] [ H.text static.data.content.title.english ]
-        , H.ul []
+        [ H.ul []
             (List.map
                 (\post ->
                     H.li []

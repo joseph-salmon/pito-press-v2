@@ -88,22 +88,28 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    { title = static.data.content.title.english
+    { title = String.concat [ static.data.content.title.teReo, " / ", static.data.content.title.english]
     , body =
         [ H.div [ A.class "f3" ] (MarkdownRenderer.mdToHtml static.data.content.description)
         , H.div [] (MarkdownRenderer.mdToHtml static.data.content.body)
-        , H.h2 []
-            [ H.text "Testimonials"
-            ]
-        , H.ul [ A.class "list pl0 cf" ]
-            (List.map
-                (\testimonial ->
-                    H.li [ A.class "fl w-50-l pa1" ]
-                        [ H.blockquote [ A.class "ma0 ph3 pv1 bg-white shadow-4 br2" ]
-                           ( List.append  (MarkdownRenderer.mdToHtml testimonial.body ) [ H.div [ A.class "pb3 tr ttu f6" ] [ H.text ("— " ++ testimonial.name )]])
-                        ]
-                )
-                static.data.testimonials
-            )
+        , if List.isEmpty static.data.testimonials then
+            H.text ""
+
+          else
+            H.div []
+                [ H.h2 []
+                    [ H.text "Testimonials"
+                    ]
+                , H.ul [ A.class "list pl0 cf" ]
+                    (List.map
+                        (\testimonial ->
+                            H.li [ A.class "fl w-50-l pa1" ]
+                                [ H.blockquote [ A.class "ma0 ph3 pv1 bg-white shadow-4 br2" ]
+                                    (List.append (MarkdownRenderer.mdToHtml testimonial.body) [ H.div [ A.class "pb3 tr ttu f6" ] [ H.text ("— " ++ testimonial.name) ] ])
+                                ]
+                        )
+                        static.data.testimonials
+                    )
+                ]
         ]
     }

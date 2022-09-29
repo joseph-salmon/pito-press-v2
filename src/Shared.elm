@@ -364,7 +364,7 @@ view sharedData page model toMsg pageView =
                             sharedData.navItems
                         )
                     , H.div [ A.class " " ]
-                        [ if pageView.title == "Home" then
+                        [ if String.contains "Home" pageView.title  then
                             H.text ""
 
                           else
