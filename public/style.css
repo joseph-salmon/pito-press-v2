@@ -10,6 +10,10 @@
         url('fonts/GT-Eesti-Display-Medium.ttf'),
 }
 
+.eesti {
+    font-family: 'GTEestiDisplay-Medium', avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+}
+
 html {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%

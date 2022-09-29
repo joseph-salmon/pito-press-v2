@@ -6,6 +6,7 @@ import General
 import Head
 import Head.Seo as Seo
 import Html as H exposing (Html)
+import Html.Attributes as A
 import MarkdownRenderer
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, StaticPayload)
@@ -77,6 +78,7 @@ view :
 view maybeUrl sharedModel static =
     { title = static.data.title.english
     , body =
-        [ H.div [] (MarkdownRenderer.mdToHtml static.data.body)
+        [ H.div [ A.class "f3" ] (MarkdownRenderer.mdToHtml static.data.description)
+        , H.div [] (MarkdownRenderer.mdToHtml static.data.body)
         ]
     }

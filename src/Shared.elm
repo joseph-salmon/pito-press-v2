@@ -1,4 +1,4 @@
-module Shared exposing (Data, Markdown, Model, Msg(..), PageImage, PublishedStatus(..), SharedMsg(..), Title, data, dateDecoder, homeView, pageImageDecoder, pubStatusDecoder, template, titleDecoder, toHumanDate)
+module Shared exposing (Data, Markdown, Model, Msg(..), PageImage, PublishedStatus(..), SharedMsg(..), Title, data, dateDecoder, pageImageDecoder, pubStatusDecoder, template, titleDecoder, toHumanDate)
 
 import Browser.Navigation
 import DataSource
@@ -42,7 +42,7 @@ type Msg
 type alias Data =
     { navItems : List NavItem
     , siteName : String
-    , socialIcons : List SocialIcon
+    , socialIcons : List Social
     }
 
 
@@ -56,10 +56,16 @@ type alias NavItem =
     }
 
 
-type alias SocialIcon =
+type alias Social =
     { url : String
-    , icon : String
+    , network : SocialNetwork
     }
+
+
+type SocialNetwork
+    = Facebook
+    | Instagram
+    | Twitter
 
 
 
@@ -239,11 +245,26 @@ navItemDecoder =
         (Decode.field "url" Decode.string)
 
 
-socialIconDecoder : Decoder SocialIcon
+socialIconDecoder : Decoder Social
 socialIconDecoder =
-    Decode.map2 SocialIcon
+    Decode.map2 Social
         (Decode.field "url" Decode.string)
-        (Decode.field "icon" Decode.string)
+        (Decode.field "network" Decode.string |> Decode.andThen socialNetworkDecoder)
+
+socialNetworkDecoder : String -> Decoder SocialNetwork
+socialNetworkDecoder str =
+        case str of
+            "Instagram" ->
+                Decode.succeed Instagram
+
+            "Facebook" ->
+                Decode.succeed Facebook
+
+            "Twitter" ->
+                Decode.succeed Twitter
+
+            _ ->
+                Decode.fail "no social network found"
 
 
 titleDecoder : Decoder Title
@@ -327,16 +348,16 @@ view sharedData page model toMsg pageView =
     in
     { title = pageView.title
     , body =
-        H.div [ A.class "sans-serif" ]
+        H.div [ A.class "eesti navy bg-near-white" ]
             [ H.nav [ A.class "f4 pa0 pa4-l pa3 bg-gold" ]
                 [ H.div [ A.class "absolute" ]
-                    [ H.a [ A.class "black link", A.href "/", A.title "Home" ] [ H.text "Pito Press" ] ]
+                    [ H.a [ A.class "navy link", A.href "/", A.title "Home" ] [ H.text "Pito Press" ] ]
                 , H.div [ A.class "mw7-l mw7-m center ph3" ]
                     [ H.ul [ A.class "list dib pa0 ma0" ]
                         (List.map
                             (\item ->
                                 H.li []
-                                    [ H.a [ A.class "black link", A.href <| "/" ++ item.url ] [ H.text item.title ]
+                                    [ H.a [ A.class "navy link", A.href <| "/" ++ item.url ] [ H.text item.title ]
                                     ]
                             )
                             sharedData.navItems
@@ -349,7 +370,7 @@ view sharedData page model toMsg pageView =
                             H.h1 [ A.class "normal lh-solid f1 mb0" ]
                                 (case title.subtitle of
                                     Just a ->
-                                        [ H.span [ A.class ""] [ H.text <| Maybe.withDefault "" title.title  ++ ":" ]
+                                        [ H.span [ A.class "" ] [ H.text <| Maybe.withDefault "" title.title ++ ":" ]
                                         , H.br [] []
                                         , H.text a
                                         ]
@@ -360,7 +381,7 @@ view sharedData page model toMsg pageView =
                         ]
                     ]
                 ]
-            , H.main_ [ A.class "mw7-l mw7-m center pv5 ph3" ]
+            , H.main_ [ A.class "mw7-l mw7-m center pv3 ph3" ]
                 [ H.div [] pageView.body
                 ]
             , H.footer [ A.class "bg-navy " ]
@@ -388,14 +409,8 @@ insta =
         |> Phosphor.toHtml []
 
 
-
--- LAYOUTS
--- Home page
-
-
-homeView : String -> Markdown -> H.Html msg
-homeView desc body =
-    H.div []
-        [ H.div [ A.class "f-headline-l f-subheadline-m f1 vh-80 pv5 pv6-m pv4-l navy lh-solid" ] [ H.text desc ]
-        , H.div [] (MarkdownRenderer.mdToHtml body)
-        ]
+fb : Html msg
+fb =
+    Phosphor.facebookLogo Bold
+        |> Phosphor.withSize 2
+        |> Phosphor.toHtml []

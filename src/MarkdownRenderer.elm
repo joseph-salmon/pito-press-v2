@@ -30,7 +30,7 @@ htmlRenderer =
 
                 Block.H6 ->
                     H.h6 [] children
-    , paragraph = H.p [ A.class "lh-copy" ]
+    , paragraph = H.p [ A.class "lh-title" ]
     , hardLineBreak = H.br [] []
     , blockQuote = H.blockquote []
     , strong =
@@ -48,11 +48,12 @@ htmlRenderer =
                     H.a
                         [ A.href link.destination
                         , A.title title
+                        , A.class "bg-gold navy"
                         ]
                         content
 
                 Nothing ->
-                    H.a [ A.href link.destination ] content
+                    H.a [ A.href link.destination, A.class "link light-red" ] content
     , image =
         \imageInfo ->
             case imageInfo.title of
@@ -74,7 +75,7 @@ htmlRenderer =
         H.text
     , unorderedList =
         \items ->
-            H.ul [ A.class "pa3" ]
+            H.ul [ A.class "pl3"]
                 (items
                     |> List.map
                         (\item ->
