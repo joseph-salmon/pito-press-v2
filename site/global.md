@@ -1,7 +1,7 @@
 ---
 nav:
-- title: Mokopuna Books
-  url: products/mokopuna-books
+- title: Products
+  url: products
 - url: testimonials
   title: Media & Testimonials
 - url: about
