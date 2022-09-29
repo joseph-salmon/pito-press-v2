@@ -17,7 +17,7 @@ htmlRenderer =
                     H.h1 [] children
 
                 Block.H2 ->
-                    H.h2 [] children
+                    H.h2 [ A.class "f2"] children
 
                 Block.H3 ->
                     H.h3 [] children

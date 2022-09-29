@@ -88,32 +88,33 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    let  selectWidth =
-            if (List.length static.data.products) > 1 then
+    let
+        selectWidth =
+            if List.length static.data.products > 1 then
                 "w-50"
 
             else
                 "w-100"
-
     in
-    { title = String.concat [ static.data.content.title.teReo, " / ", static.data.content.title.english]
+    { title = String.concat [ static.data.content.title.teReo, " / ", static.data.content.title.english ]
     , body =
-        [ H.div [] (MarkdownRenderer.mdToHtml static.data.content.body)
+        [ H.h2 [A.class "f2" ] [ H.text "Products"]
         , H.ul [ A.class "list pl0 cf w-100" ]
             (List.map
                 (\product ->
-                    H.li [ A.class <| String.concat [selectWidth, " ", "pa2 fl"] ]
+                    H.li [ A.class <| String.concat [ selectWidth, " ", " fl" ] ]
                         [ Route.link
                             (Route.Products__Slug_ { slug = product.slug })
                             []
-                            (productPreview product )
-                            
+                            (productPreview product)
                         ]
                 )
                 static.data.products
             )
+        , H.div [] (MarkdownRenderer.mdToHtml static.data.content.body)
         ]
     }
+
 
 productPreview : Product -> List (Html msg)
 productPreview product =
@@ -121,13 +122,11 @@ productPreview product =
         featuredImage =
             product.productImages
                 |> List.head
-                |> Maybe.map (\image -> H.img [ A.src <| Url.toString image.src, A.alt image.alt] [])
+                |> Maybe.map (\image -> H.img [ A.src <| Url.toString image.src, A.alt image.alt ] [])
                 |> Maybe.withDefault (H.text "")
-
-        
     in
-        [ H.div [ A.class "dim"]
-            [ featuredImage
-            , H.h2 [ A.class "link navy normal f3 ma0" ] [ H.text product.title ] ]
-        
+    [ H.div [ A.class "dim" ]
+        [ featuredImage
+        , H.h2 [ A.class "link navy normal underline f3 ma0" ] [ H.text product.title ]
         ]
+    ]
