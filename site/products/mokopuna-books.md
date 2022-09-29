@@ -3,8 +3,7 @@ publish_date: 2022-03-30T08:56:29.000+00:00
 title: Mokopuna Books
 published: true
 product_images: []
-description: We can create a beautiful bilingual book about your beloved mokopuna
-  for your whānau to treasure.
+description: We can create a beautiful bilingual book about your beloved mokopuna for your whānau to treasure.
 
 ---
 Customise a bilingual book to tell the story of the special relationship with your mokopuna, grandchild, irāmutu or pēpi. These personalised publications are perfect for learners of te reo Māori and young tamariki to share with their whānau.

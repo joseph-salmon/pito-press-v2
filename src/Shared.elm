@@ -251,20 +251,21 @@ socialIconDecoder =
         (Decode.field "url" Decode.string)
         (Decode.field "network" Decode.string |> Decode.andThen socialNetworkDecoder)
 
+
 socialNetworkDecoder : String -> Decoder SocialNetwork
 socialNetworkDecoder str =
-        case str of
-            "Instagram" ->
-                Decode.succeed Instagram
+    case str of
+        "Instagram" ->
+            Decode.succeed Instagram
 
-            "Facebook" ->
-                Decode.succeed Facebook
+        "Facebook" ->
+            Decode.succeed Facebook
 
-            "Twitter" ->
-                Decode.succeed Twitter
+        "Twitter" ->
+            Decode.succeed Twitter
 
-            _ ->
-                Decode.fail "no social network found"
+        _ ->
+            Decode.fail "no social network found"
 
 
 titleDecoder : Decoder Title
@@ -349,15 +350,15 @@ view sharedData page model toMsg pageView =
     { title = pageView.title
     , body =
         H.div [ A.class "eesti navy bg-near-white" ]
-            [ H.nav [ A.class "f4 pa0 pa4-l pa3 bg-gold" ]
-                [ H.div [ A.class "absolute" ]
-                    [ H.a [ A.class "navy link", A.href "/", A.title "Home" ] [ H.text "Pito Press" ] ]
-                , H.div [ A.class "mw7-l mw7-m center ph3" ]
-                    [ H.ul [ A.class "list dib pa0 ma0" ]
+            [ H.nav [ A.class "f4 pa0 pa4-l pa3" ]
+                [ H.div [ A.class "mw7-l center" ]
+                    [ H.div [ A.class "absolute-l top-0-l left-0-l ph3-l pv4-l pa0" ]
+                        [ H.a [ A.class "navy link", A.href "/", A.title "Home" ] [ H.img [ A.src "./pitopress.svg", A.width 120, A.height 120, A.alt "Pito Press" ] [] ] ]
+                    , H.ul [ A.class "list dib ma0 pa0 pa3-l" ]
                         (List.map
                             (\item ->
                                 H.li []
-                                    [ H.a [ A.class "navy link", A.href <| "/" ++ item.url ] [ H.text item.title ]
+                                    [ H.a [ A.class "navy link dim", A.href <| "/" ++ item.url ] [ H.text item.title ]
                                     ]
                             )
                             sharedData.navItems
@@ -367,7 +368,7 @@ view sharedData page model toMsg pageView =
                             H.text ""
 
                           else
-                            H.h1 [ A.class "normal lh-solid f1 mb0" ]
+                            H.h1 [ A.class "normal lh-solid f1 mb0 pa3-l" ]
                                 (case title.subtitle of
                                     Just a ->
                                         [ H.span [ A.class "" ] [ H.text <| Maybe.withDefault "" title.title ++ ":" ]
@@ -381,18 +382,11 @@ view sharedData page model toMsg pageView =
                         ]
                     ]
                 ]
-            , H.main_ [ A.class "mw7-l mw7-m center pv3 ph3" ]
+            , H.main_ [ A.class "mw7-l center pv3 ph3" ]
                 [ H.div [] pageView.body
                 ]
             , H.footer [ A.class "bg-navy " ]
-                [ H.div [ A.class "pv5 pv6-m pv6-l mw7-l mw7-m center" ]
-                    (List.map
-                        (\a ->
-                            H.div []
-                                [ H.a [ A.class "white", A.href a.url, A.target "_blank" ] [ insta ] ]
-                        )
-                        sharedData.socialIcons
-                    )
+                [ H.div [ A.class "pa4 pv6-m pv6-l mw7-l mw7-m center" ] (socilIconView sharedData.socialIcons)
                 ]
             ]
     }
@@ -400,6 +394,28 @@ view sharedData page model toMsg pageView =
 
 
 -- ICONS
+
+
+socilIconView : List Social -> List (Html msg)
+socilIconView sn =
+    List.map
+        (\a ->
+            let
+                network =
+                    case a.network of
+                        Instagram ->
+                            insta
+
+                        Facebook ->
+                            fb
+
+                        Twitter ->
+                            twitter
+            in
+            H.div [ A.class "dib pr2" ]
+                [ H.a [ A.class "white", A.href a.url, A.target "_blank" ] [ network ] ]
+        )
+        sn
 
 
 insta : Html msg
@@ -412,5 +428,12 @@ insta =
 fb : Html msg
 fb =
     Phosphor.facebookLogo Bold
+        |> Phosphor.withSize 2
+        |> Phosphor.toHtml []
+
+
+twitter : Html msg
+twitter =
+    Phosphor.twitterLogo Bold
         |> Phosphor.withSize 2
         |> Phosphor.toHtml []

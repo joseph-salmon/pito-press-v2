@@ -27,6 +27,7 @@ type alias Product =
     { body : Markdown
     , slug : String
     , title : String
+    , description : String
     , publishDate : Time.Posix
     , productImages : List Shared.PageImage
     }
@@ -63,9 +64,10 @@ productSingleData slug =
 
 productDecoder : String -> Shared.Markdown -> Decoder Product
 productDecoder slug body =
-    Decode.map4 (Product body)
+    Decode.map5 (Product body)
         (Decode.succeed slug)
         (Decode.field "title" Decode.string)
+        (Decode.field "description" Decode.string)
         (Decode.field "publish_date" Decode.string |> Decode.andThen Shared.dateDecoder)
         (Decode.field "product_images" (Decode.list Shared.pageImageDecoder))
 
