@@ -64,7 +64,7 @@ fields:
   - name: alt
     type: text
     config:
-      required: true
+      required: false
       min: 0
       max: 250
     label: Alt text
