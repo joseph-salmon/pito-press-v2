@@ -11,5 +11,3 @@ fields:
     max: 250
   label: Name
   description: The name of the referee
-pages:
-- site/testimonials/Miriam.md
