@@ -2,8 +2,6 @@
 nav:
 - title: Products & Services
   url: products
-- url: testimonials
-  title: Testimonials
 - url: about
   title: About
 - url: contact
