@@ -18,10 +18,3 @@ Pito Press has developed since 2017, with valued input from a roopū of educator
 We have appreciated discussion of our whakaaro with the late Matua Greg Ratana, Whaea Jas Ratana, the late Whaea Gail Imhoff, Whaea Sandy Nepia, Jay Rerekura, Matariki Cribb-Fox, Jess Firmin, Lisa Reweti and Meretini Bennett-Huxtable who all whakapapa to Whanganui.
 
 We’re very grateful to Thrive Whanganui, The Generator and Whanganui & Partners for their generous support in the development of our business.
-
-## Media
-
-* [Jigsaw Whanganui - 30 Years history book](https://www.facebook.com/204023749636631/posts/kay-benseman-writing-history-of-jigsaw-for-their-30thjigsaw-whanganui-will-be-ce/2760475407324773/)
-* [Piecing together Jigsaw's history](https://www.nzherald.co.nz/whanganui-chronicle/news/piecing-together-jigsaws-history/VJQWJROVMU2JNZZTMPBZ7X5I54/)
-* [The Generator interview](https://www.youtube.com/watch?v=mfuZ2VVNLvo) 
-* [Thrive Whanganui magazine](https://indd.adobe.com/view/941cc354-ffff-4e9f-bc7d-4b8cbca9b8ab)
