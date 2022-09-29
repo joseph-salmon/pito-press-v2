@@ -2,9 +2,7 @@
 publish_date: 2022-03-30T08:56:29.000+00:00
 title: Mokopuna Books
 published: true
-product_images:
-- image: "/uploads/woodcut.jpg"
-  alt: Carving it up
+product_images: []
 
 ---
 We can create a beautiful bilingual book about your beloved mokopuna for your whānau to treasure.
