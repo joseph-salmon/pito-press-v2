@@ -1,6 +1,6 @@
 ---
 nav:
-- title: Products
+- title: Products & Services
   url: products
 - url: testimonials
   title: Media & Testimonials
