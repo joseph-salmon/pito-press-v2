@@ -7,10 +7,10 @@ product_images:
   alt: Test image 2
 - image: "/uploads/img_0951.jpg"
   alt: test image
+description: Our inaugural product is a perpetual dual calendar to support te reo
+  Māori language learners wanting to understand maramataka.
 
 ---
-Our inaugural product is a perpetual dual calendar to support te reo Māori language learners wanting to understand maramataka.
-
 This has been developed in collaboration with Meretini Bennett-Huxtable and te reo Māori translated by Matariki Cribb-Fox. Prototypes have been tested by our iwi partners; Jay Rerekura, Jasmin Ratana, Jo & Graham Cameron and whānau, and Lisa Reweti.
 
 Learning from Dr Rangi Matamua’s kōrero and guided by Meretini Bennett-Huxtable, we have made a calendar that whānau from around the motu can customise with lunar phase kupu from their own rohe.
