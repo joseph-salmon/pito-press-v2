@@ -3,7 +3,7 @@ nav:
 - title: Products & Services
   url: products
 - url: testimonials
-  title: Media & Testimonials
+  title: Testimonials
 - url: about
   title: About
 - url: contact
