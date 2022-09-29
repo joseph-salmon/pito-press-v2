@@ -11,15 +11,17 @@ page_image:
   alt: chisel
 
 ---
-## Research
+## Services
+
+### Research
 
 Interviews, surveys, archival, histories, evaluation, family history
 
-## Writing
+### Writing
 
 Reviews, evaluation, reports, grant applications, media releases, social media, narrative, communications content strategy, creative, education resources, historical
 
-## Design
+### Design
 
 * Photography
 * Visual identities - logo, branding/guidelines, typography
