@@ -3,12 +3,12 @@ publish_date: 2022-03-30T08:56:29.000+00:00
 title: Mokopuna Books
 published: true
 product_images:
-- image: "/uploads/mokopuna-page-2.jpeg"
-  alt: Mokopuna book - page detail 2
-- image: "/uploads/mokopuna-page-1.jpg"
-  alt: Mokopuna book - page detail
 - image: "/uploads/mokopuna-cover.jpeg"
   alt: Mokopuna book - cover
+- image: "/uploads/mokopuna-page-1.jpg"
+  alt: Mokopuna book - page detail
+- image: "/uploads/mokopuna-page-2.jpeg"
+  alt: Mokopuna book - page detail 2
 description: We can create a beautiful bilingual book about your beloved mokopuna
   for your whānau to treasure.
 
