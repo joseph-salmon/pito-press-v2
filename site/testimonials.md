@@ -7,7 +7,7 @@ title:
 description: We acknowledge our role as tāngata Tiriti, we are manuhiri with no birthright
   to the Māori language. Therefore we are guided and informed by hoa haere and tāngata
   whenua experts.
-published: true
+published: false
 page_image:
   image: "/uploads/woodcut.jpg"
   alt: chisel

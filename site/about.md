@@ -12,23 +12,26 @@ page_image:
   alt: Kay and Joe
 
 ---
-He tāngata Tiriti māua. We are both Pākehā, our ancestors are from England, Ireland, Scotland, Spain and Germany. Joe (he/him/ia) grew up in Napier, and Kay (she/her/ia) in Whanganui. We acknowledge the tāngata whenua of these rohe. Ngā mihi ki Ngāti Kahungungu ki Heretaungā, ki Te Ātihaunui-a-Pāpārangi, ki Ngā Rauru hoki.
+Kay Benseman and Joe Salmon are co-founders of Pito Press*. He tāngata Tiriti rāua. As Pākehā, their families whakapapa to Ireland, Scotland, Spain, Germany and England. Joe (he/him) grew up in Napier, and Kay (she/her) in Whanganui and they acknowledge the mana whenua of these rohe. Ngā mihi ki Ngāti Kahungunu ki Heretaungā, ki Te Ātihaunui-a-Pāpārangi, ki Ngā Rauru hoki.
 
-Kay began learning te reo Māori over 20 years ago and then returned to immersion study to support the language goals of her wider whānau. Kay & Joe met in Whanganui in 2009, later married and became parents.
+Kay began learning te reo Māori over 25 years ago and then returned to immersion study to support the language reclamation goals of her wider whānau. Joe established his graphic design practice in 2009 and met Kay at their mates’ cafe the same year. Married in 2013, they make a great team with a complementary combination of skills and interests. Both are adult second language learners and have spoken te reo Māori to their two young tamariki since birth.
 
-When the eldest of our two tamariki was born in 2015, we chose to kōrero Māori at home. Pito Press grew out of our experiences speaking te reo Māori as a Pākehā family. While we are not yet fluent, we are both committed to our ongoing learning, ā, kei te ako tonu māua. Pito Press contracts Te Taura Whiri registered translators for Māori language publications.
+Pito Press grew out of Joe & Kay’s experiences speaking te reo Māori as a Pākehā family and connecting with other second language learners. While they are not yet fluent, they are both committed to their ongoing learning. Pito Press contracts Te Taura Whiri registered translators for Māori language publications.
 
-We are grateful for the support of The Generator, Thrive Whanganui and our roopū of kaitautoko who have guided us as we’ve established Pito Press. Kei runga noa atu koutou!
+Over the last 5 years, the ideas Joe and Kay had about Pito Press have developed through discussions with a roopū of educators, advisors and consultants.
 
-## Media
+They are very grateful for the guidance, feedback and mentoring of:
 
-* [Jigsaw Whanganui - 30 Years history book](https://www.facebook.com/204023749636631/posts/kay-benseman-writing-history-of-jigsaw-for-their-30thjigsaw-whanganui-will-be-ce/2760475407324773/)
-* [Piecing together Jigsaw's history](https://www.nzherald.co.nz/whanganui-chronicle/news/piecing-together-jigsaws-history/VJQWJROVMU2JNZZTMPBZ7X5I54/)
-* [The Generator interview](https://www.youtube.com/watch?v=mfuZ2VVNLvo)
-* [Thrive Whanganui magazine](https://indd.adobe.com/view/941cc354-ffff-4e9f-bc7d-4b8cbca9b8ab)
+* Graham Cameron - Ngāti Ranginui, Waitaha ā Hei, Ngāti Rangiwewehi, Ngāti Hinerangi
+* Lou Brider - Ngāti Ruru, Ngāti Uenuku, Ngāti Rangi and Te Ātihaunui-a-Pāpārangi
+* Nicola Patrick of Thrive Whanganui
+* Paul Fletcher from The Generator
+* Matariki Cribb-Fox - Ngā Rauru Kītahi, Ngāti Apa, Ngāti Kuia, Ngāti Mutunga, Ngāti Pikiao, Taranaki, Te Ātiawa (Taranaki), Te Ātihaunui-a-Pāpārangi
+* Haydon Richards - Kāi Tahu from HTK Group
+* Simon Putan from Whanganui & Partners
 
-***
+Pito Press acknowledges the support they’ve received in grants from The Generator and Whanganui & Partners. Ngā mihi.
 
-Image credit: de Vegt Photography.
+—
 
-\* pito (‘pi’ as in ‘peapod’ and ‘to’ as in ‘tornado’) translates from te reo Māori to ‘belly button’. A pito is a permanent reminder of our whakapapa. We are connected to those who have come before us, and those who are yet to come.
+_* pito (‘pi’ as in ‘peapod’ and ‘to’ as in ‘tornado’) translates from te reo Māori to ‘belly button’. A pito is a permanent reminder of our whakapapa. We are connected to those who have come before us, and those who are yet to come._
