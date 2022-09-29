@@ -1,6 +1,6 @@
 ---
 title: Maramataka / Perpetual Calendar
-published: true
+published: false
 publish_date: 2021-10-19T09:11:13.000+00:00
 product_images:
 - image: "/uploads/woodcut.jpg"
