@@ -12,8 +12,8 @@ keywords:
 - aotearoa
 published: true
 page_image:
-  image: "/uploads/woodcut.jpg"
-  alt: Carving
+  image: "/uploads/mokopuna-cover.jpeg"
+  alt: Mokopuna Book
 description: Tools for learning and unlearning in Aotearoa
 
 ---
