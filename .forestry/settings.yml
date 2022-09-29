@@ -16,7 +16,7 @@ sections:
   label: Home
 - type: document
   path: site/products.md
-  label: Products & services
+  label: Products
 - type: document
   path: site/testimonials.md
   label: Testimonials
