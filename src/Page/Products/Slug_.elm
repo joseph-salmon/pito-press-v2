@@ -80,7 +80,7 @@ head static =
     in
     Seo.summary
         { canonicalUrlOverride = Nothing
-        , siteName = "elm-pages"
+        , siteName = "Pito Press"
         , image =
             { url = pageImage.src
             , alt = pageImage.alt
@@ -89,7 +89,7 @@ head static =
             }
         , description = "TODO"
         , locale = Nothing
-        , title = "TODO title" -- metadata.title -- TODO
+        , title = static.data.title
         }
         |> Seo.website
 
