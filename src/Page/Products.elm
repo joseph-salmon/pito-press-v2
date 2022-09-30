@@ -77,7 +77,7 @@ head static =
             }
         , description = static.data.content.description
         , locale = Nothing
-        , title = "Products"
+        , title = static.data.content.title.english
         }
         |> Seo.website
 
