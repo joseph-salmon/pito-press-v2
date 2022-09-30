@@ -8,7 +8,7 @@ description: "Kay Benseman and Joe Salmon are co-founders of Pito Press*. \nHe t
   Tiriti rāua. "
 published: false
 page_image:
-  image: "/uploads/kay-joe.jpg"
+  image: ''
   alt: Kay and Joe
 
 ---
