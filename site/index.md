@@ -10,6 +10,11 @@ keywords:
 - whanganui
 - decolonisation
 - aotearoa
+- tiriti
+- design
+- research
+- writing
+- language
 published: true
 page_image:
   image: "/uploads/mokopuna-cover.jpeg"
