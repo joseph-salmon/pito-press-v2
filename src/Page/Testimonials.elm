@@ -68,16 +68,16 @@ head :
 head static =
     Seo.summary
         { canonicalUrlOverride = Nothing
-        , siteName = "elm-pages"
+        , siteName = static.sharedData.siteName
         , image =
-            { url = Pages.Url.external "TODO"
-            , alt = "elm-pages logo"
+            { url = Pages.Url.external ""
+            , alt = ""
             , dimensions = Nothing
             , mimeType = Nothing
             }
-        , description = "TODO"
+        , description = static.data.content.description
         , locale = Nothing
-        , title = "TODO title" -- metadata.title -- TODO
+        , title = static.data.content.title.english
         }
         |> Seo.website
 
