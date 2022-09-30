@@ -14,7 +14,7 @@ type alias Data =
 config : SiteConfig Data
 config =
     { data = data
-    , canonicalUrl = "https://elm-pages.com"
+    , canonicalUrl = "https://pitopress.co.nz"
     , manifest = manifest
     , head = head
     }
@@ -34,8 +34,8 @@ head static =
 manifest : Data -> Manifest.Config
 manifest static =
     Manifest.init
-        { name = "Site Name"
-        , description = "Description"
+        { name = "Pito Press"
+        , description = "Tools for learning and unlearning in Aotearoa"
         , startUrl = Route.Index |> Route.toPath
         , icons = []
         }
