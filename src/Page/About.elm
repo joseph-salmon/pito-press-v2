@@ -65,7 +65,7 @@ head static =
             }
         , description = static.data.description
         , locale = Nothing
-        , title = static.sharedData.siteName
+        , title = static.data.title
         }
         |> Seo.website
 
