@@ -3,7 +3,7 @@ nav:
 - title: Products & Services / Ngā Taonga & Ngā Mahi
   url: products
 - url: about
-  title: About
+  title: About / Ko Wai
 - url: contact
   title: Contact
 site-name: Pito Press
