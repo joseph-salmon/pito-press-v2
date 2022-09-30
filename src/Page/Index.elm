@@ -63,9 +63,9 @@ head static =
             , dimensions = Nothing
             , mimeType = Nothing
             }
-        , description = "TODO"
+        , description = static.data.description
         , locale = Nothing
-        , title = static.sharedData.siteName
+        , title = static.data.title
         }
         |> Seo.website
 
