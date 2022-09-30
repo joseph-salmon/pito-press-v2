@@ -1,6 +1,6 @@
 ---
 nav:
-- title: Products & Services
+- title: Products & Services / Ngā Taonga & Ngā Mahi
   url: products
 - url: about
   title: About
