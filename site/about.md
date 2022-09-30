@@ -8,8 +8,8 @@ description: "Kay Benseman and Joe Salmon are co-founders of Pito Press*. \nHe t
   Tiriti rāua. "
 published: false
 page_image:
-  image: "/uploads/kay-joe.jpg"
-  alt: Kay and Joe
+  image: ''
+  alt: ''
 
 ---
 As Pākehā, their families whakapapa to Ireland, Scotland, Spain, Germany and England. Joe (he/him) grew up in Napier, and Kay (she/her) in Whanganui and they acknowledge the mana whenua of these rohe. Ngā mihi ki Ngāti Kahungunu ki Heretaungā, ki Te Ātihaunui-a-Pāpārangi, ki Ngā Rauru hoki.
