@@ -4,8 +4,8 @@ keywords: []
 title:
   english: About
   te_reo_maori: Ko wai mātou
-description: 'Kay Benseman and Joe Salmon are co-founders of Pito Press*. He tāngata
-  Tiriti rāua. '
+description: "Kay Benseman and Joe Salmon are co-founders of Pito Press*. \nHe tāngata
+  Tiriti rāua. "
 published: false
 page_image:
   image: "/uploads/kay-joe.jpg"
