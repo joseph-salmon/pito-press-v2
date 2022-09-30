@@ -1,11 +1,11 @@
 ---
 nav:
-- title: Products & Services / Ngā Taonga & Ngā Mahi
+- title: Products & Services
   url: products
 - url: about
-  title: About / Ko Wai
+  title: About
 - url: contact
-  title: Contact / Whakapā Mai
+  title: Contact
 site-name: Pito Press
 footer: This is some content for the footer
 social_links:
