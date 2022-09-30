@@ -69,7 +69,7 @@ head :
 head static =
     Seo.summary
         { canonicalUrlOverride = Nothing
-        , siteName = "elm-pages"
+        , siteName = static.sharedData.siteName
         , image =
             { url = static.data.content.pageImage.src
             , alt = static.data.content.pageImage.alt
