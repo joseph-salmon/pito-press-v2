@@ -14,25 +14,25 @@ htmlRenderer =
         \{ level, children } ->
             case level of
                 Block.H1 ->
-                    H.h1 [] children
+                    H.h1 [ A.class "f1"] children
 
                 Block.H2 ->
                     H.h2 [ A.class "f2"] children
 
                 Block.H3 ->
-                    H.h3 [] children
+                    H.h3 [ A.class "f3" ] children
 
                 Block.H4 ->
-                    H.h4 [] children
+                    H.h4 [ A.class "f4" ] children
 
                 Block.H5 ->
-                    H.h5 [] children
+                    H.h5 [ A.class "f5"] children
 
                 Block.H6 ->
-                    H.h6 [] children
-    , paragraph = H.p [ A.class "lh-title" ]
-    , hardLineBreak = H.br [] []
-    , blockQuote = H.blockquote []
+                    H.h6 [A.class "f6" ] children
+    , paragraph = H.p [ A.class "lh-title f4" ]
+    , hardLineBreak = H.br [ A.class "lh-title f4" ] []
+    , blockQuote = H.blockquote [ A.class "lh-title f4" ]
     , strong =
         \children -> H.strong [] children
     , emphasis =
@@ -75,7 +75,7 @@ htmlRenderer =
         H.text
     , unorderedList =
         \items ->
-            H.ul [ A.class "pl3"]
+            H.ul [ A.class "pl3 lh-title f4"]
                 (items
                     |> List.map
                         (\item ->
@@ -103,7 +103,7 @@ htmlRenderer =
                                                         ]
                                                         []
                                     in
-                                    H.li [] (checkbox :: children)
+                                    H.li [ ] (checkbox :: children)
                         )
                 )
     , orderedList =
@@ -111,10 +111,10 @@ htmlRenderer =
             H.ol
                 (case startingIndex of
                     1 ->
-                        [ A.start startingIndex ]
+                        [ A.start startingIndex, A.class "lh-title f4" ]
 
                     _ ->
-                        []
+                        [ A.class "lh-title f4" ]
                 )
                 (items
                     |> List.map

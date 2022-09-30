@@ -104,11 +104,11 @@ view maybeUrl sharedModel static =
     , body =
         [ -- TODO: Format date
           -- Day, 13 July 1981
-          H.div []
+          H.div [ A.class "mb4"]
             (static.data.productImages
                 |> List.map (\image -> H.img [ A.src <| Url.toString image.src, A.alt image.alt, A.class "mb2"] [])
             )
-        , H.div [ A.class "f3" ] (MarkdownRenderer.mdToHtml static.data.description)
+        , H.div [ A.class "f3" ] [ H.text static.data.description ]
         , H.div [] <| MarkdownRenderer.mdToHtml static.data.body
         ]
     }

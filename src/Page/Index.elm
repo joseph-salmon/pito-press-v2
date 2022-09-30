@@ -79,7 +79,7 @@ view maybeUrl sharedModel static =
     { title = String.concat [ static.data.title.teReo, " / ", static.data.title.english]
     , body =
         [ H.div []
-            [ H.div [ A.class "f-headline-l f-subheadline-m f1  pv4 pv5-l lh-solid" ]
+            [ H.div [ A.class "f-headline-l f-subheadline-m f1  pv4 pv5-l lh-title" ]
                 [ H.mark [ A.class "bg-yellow navy"] [ H.text static.data.description ]
                 ]
             , H.div [] (MarkdownRenderer.mdToHtml static.data.body)

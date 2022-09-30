@@ -78,10 +78,10 @@ view :
 view maybeUrl sharedModel static =
     { title = String.concat [ static.data.title.teReo, " / ", static.data.title.english] 
     , body =
-        [ H.div [] [
+        [ H.div [ A.class "mb4"] [
             H.img [ A.src <| Url.toString static.data.pageImage.src, A.alt static.data.pageImage.alt] []
          ]
-        , H.div [ A.class "f3" ] (MarkdownRenderer.mdToHtml static.data.description)
+        , H.div [ A.class "f3" ] [ H.text static.data.description ]
         , H.div [] (MarkdownRenderer.mdToHtml static.data.body)
         ]
     }
