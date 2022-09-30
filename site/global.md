@@ -5,7 +5,7 @@ nav:
 - url: about
   title: About / Ko Wai
 - url: contact
-  title: Contact
+  title: Contact / Whakapā Mai
 site-name: Pito Press
 footer: This is some content for the footer
 social_links:
