@@ -22,7 +22,7 @@ Over the last 5 years, the ideas Joe and Kay had about Pito Press have developed
 
 They are very grateful for the guidance, feedback and mentoring of:
 
-* Graham Cameron - Ngāti Ranginui, Waitaha ā Hei, Ngāti Rangiwewehi, Ngāti Hinerangi
+* Graham Bidois Cameron - Ngāti Ranginui, Waitaha ā Hei, Ngāti Rangiwewehi, Ngāti Hinerangi
 * Lou Brider - Ngāti Ruru, Ngāti Uenuku, Ngāti Rangi and Te Ātihaunui-a-Pāpārangi
 * Nicola Patrick of Thrive Whanganui
 * Paul Fletcher from The Generator
