@@ -76,9 +76,9 @@ head static =
             , dimensions = Nothing
             , mimeType = Nothing
             }
-        , description = "TODO"
+        , description = static.data.content.description
         , locale = Nothing
-        , title = "TODO title" -- metadata.title -- TODO
+        , title = static.data.content.title.english
         }
         |> Seo.website
 
