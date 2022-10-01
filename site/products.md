@@ -13,6 +13,8 @@ page_image:
 ---
 ## Services
 
+Pito Press offers the following services. Please get in touch to discuss your kaupapa.
+
 ### Research
 
 Interviews, surveys, archival, histories, evaluation, family history
