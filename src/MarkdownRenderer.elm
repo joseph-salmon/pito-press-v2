@@ -53,7 +53,7 @@ htmlRenderer =
                         content
 
                 Nothing ->
-                    H.a [ A.href link.destination, A.class "underline navy dim" ] content
+                    H.a [ A.href link.destination, A.class "underline red dim" ] content
     , image =
         \imageInfo ->
             case imageInfo.title of
