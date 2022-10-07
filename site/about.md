@@ -14,9 +14,11 @@ page_image:
 ---
 As Pākehā, their families whakapapa to Ireland, Scotland, Spain, Germany and England. Joe (he/him) grew up in Napier, and Kay (she/her) in Whanganui and they acknowledge the mana whenua of these rohe. Ngā mihi ki Ngāti Kahungunu ki Heretaungā, ki Te Ātihaunui-a-Pāpārangi, ki Ngā Rauru hoki.
 
-Kay began learning te reo Māori over 25 years ago and then returned to immersion study to support the language reclamation goals of her wider whānau. Joe established his graphic design practice in 2009 and met Kay at their mates’ cafe the same year. Married in 2013, they make a great team with a complementary combination of skills and interests. Both are adult second language learners and have spoken te reo Māori to their two young tamariki since birth.
+Kay began learning te reo Māori over 25 years ago and then returned to immersion study to support the language reclamation goals of her wider whānau. Joe established his graphic design practice in 2009 and met Kay at their mates’ cafe the same year. Married in 2013, they make a great team with a complementary combination of skills and interests. 
 
-Pito Press grew out of Joe & Kay’s experiences speaking te reo Māori as a Pākehā family and connecting with other second language learners. While they are not yet fluent, they are both committed to their ongoing learning. Pito Press contracts Te Taura Whiri registered translators for Māori language publications.
+Pito Press grew from Joe & Kay’s experiences as a Pākehā family speaking te reo Māori to their two young tamariki since birth and connecting with other second language learners. They are committed to contributing to decolonisation in Aotearoa, beginning with themselves.
+
+Pito Press contracts Te Taura Whiri registered translators for Māori language publications.
 
 Over the last 5 years, the ideas Joe and Kay had about Pito Press have developed through discussions with a roopū of educators, advisors and consultants.
 
