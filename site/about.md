@@ -16,7 +16,7 @@ As Pākehā, their families whakapapa to Ireland, Scotland, Spain, Germany and E
 
 Kay began learning te reo Māori over 25 years ago and then returned to immersion study to support the language reclamation goals of her wider whānau. Joe established his graphic design practice in 2009 and met Kay at their mates’ cafe the same year. Married in 2013, they make a great team with a complementary combination of skills and interests.
 
-Pito Press grew from Joe & Kay’s experiences speaking te reo Māori to their tamariki since birth and connecting with other second language learners. They are committed to contributing to decolonisation in Aotearoa, beginning with themselves.
+Pito Press grew from Joe & Kay’s experiences speaking te reo Māori to their tamariki since birth and connecting with other second language learners. They are both committed to contributing to decolonisation in Aotearoa, beginning with themselves.
 
 Pito Press contracts Te Taura Whiri registered translators for Māori language publications.
 
