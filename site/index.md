@@ -24,6 +24,6 @@ description: Tools for learning and unlearning in Aotearoa
 ---
 ## Nau mai / welcome
 
-Pito Press is a social enterprise who research, write, design and co-create resources and publications to tautoko those who are learning or reclaiming te reo Māori.
+Pito Press is a social enterprise - we research, write, design and co-create resources and publications to tautoko those who are learning or reclaiming te reo Māori.
 
 We work collaboratively as Te Tiriti partners with tāngata whenua to contribute to decolonisation.
