@@ -34,6 +34,10 @@ Pito Press acknowledges the support they’ve received in grants from The Genera
 
 —
 
-_* pito (‘pi’ as in ‘peapod’ and ‘to’ as in ‘tornado’) translates from te reo Māori to ‘belly button’.   
-A pito is a permanent reminder of our whakapapa.   
+_* pito (‘pi’ as in ‘peapod’ and ‘to’ as in ‘tornado’) translates from te reo Māori to ‘belly button’.  
+A pito is a permanent reminder of our whakapapa.  
 We are connected to those who have come before us, and those who are yet to come._
+
+—
+
+image credit: de Vegt Photography
