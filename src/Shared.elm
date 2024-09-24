@@ -6,7 +6,6 @@ import DataSource.File as File
 import Html as H exposing (Html)
 import Html.Attributes as A
 import Iso8601
-import MarkdownRenderer
 import OptimizedDecoder as Decode exposing (Decoder)
 import Pages.Flags
 import Pages.PageUrl exposing (PageUrl)
@@ -364,7 +363,7 @@ view sharedData page model toMsg pageView =
                             sharedData.navItems
                         )
                     , H.div [ A.class " " ]
-                        [ if String.contains "Home" pageView.title  then
+                        [ if String.contains "Home" pageView.title then
                             H.text ""
 
                           else

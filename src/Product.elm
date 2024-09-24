@@ -9,9 +9,7 @@ import List.Extra exposing (unique)
 import OptimizedDecoder as Decode exposing (Decoder)
 import Page exposing (Page, PageWithState, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
-import Pages.Url as Url
 import Path exposing (..)
-import Route
 import Shared exposing (..)
 import Time
 import View exposing (View)
@@ -70,6 +68,3 @@ productDecoder slug body =
         (Decode.field "description" Decode.string)
         (Decode.field "publish_date" Decode.string |> Decode.andThen Shared.dateDecoder)
         (Decode.field "product_images" (Decode.list Shared.pageImageDecoder))
-
-
-
